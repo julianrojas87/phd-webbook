@@ -1,0 +1,6 @@
+[book]
+authors = ["Julián Rojas"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Decentralised Linked Data architectures for the transport domain"
