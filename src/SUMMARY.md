@@ -11,11 +11,10 @@
     - [The European interoperability landscape](ch_1.2_eu-interop.md)
     - [Towards cost-efficient Web APIs](ch_1.3_web-apis.md)
     - [Research goals](ch_1.4_research-goals.md)
-    - [Contributions](ch_1.5_contributions.md_)
+    - [Contributions](ch_1.5_contributions.md)
     - [Impact](ch_1.6_impact.md)
     - [Publications](ch_1.7_publications.md)
     - [Outline](ch_1.8_outline.md)
-    - [References](ch_1_references.md)
 
 ## The Velopark Linked Open Data platform and Live Data publishing in Flanders
 
@@ -36,7 +35,6 @@
             - [Experiment design](ch_2.2.6.1_design.md)
             - [Inconclusive results](ch_2.2.6.2_results.md)
         - [Conclusion and future work](ch_2.2.7_conclusion.md)
-    - [References](ch_2_references.md)
 
 ## Cost-efficient publication of public transport data on the Web
 
@@ -51,4 +49,45 @@
         - [Discussion](ch_3.1.7_discussion.md)
         - [Conclusions and future work](ch_3.1.8_conclusions.md)
     - [Efficient live public transport data sharing for route planning on the Web](ch_3.2_live-data.md)
-    - [References](ch_3_references.md)
+        - [Introduction](ch_3.2.1_introduction.md)
+        - [Related work](ch_3.2.2_related-work.md)
+            - [Public transport standards](ch_3.2.2.1_pt-standards.md)
+            - [Public transport on the Web](ch_3.2.2.2_pt-web.md)
+            - [Route planning algorithms](ch_3.2.2.3_rp-algorithms.md)
+            - [Live streaming data on the Web](ch_3.2.2.4_live-data.md)
+        - [Reference architecture](ch_3.2.3_ref-architecture.md)
+            - [Publishing live public transport updates](ch_3.2.3.1_publishing-live-updates.md)
+            - [Consuming live public transport updates](ch_3.2.3.2_consuming-live-updates.md)
+            - [Dynamic rollbacks for CSA](ch_3.2.3.3_dynamic-rollbacks.md)
+        - [Evaluation](ch_3.2.4_evaluation.md)
+            - [Real-world test data](ch_3.2.4.1_test-data.md)
+            - [Experiment 1: Pushing live transport updates](ch_3.2.4.2_experiment-1.md)
+            - [Experiment 2: Consuming live transport updates](ch_3.2.4.3_experiment-2.md)
+        - [Results](ch_3.2.5_results.md)
+        - [Conclusion and future work](ch_3.2.6_conclusion.md)
+
+## Leveraging semantic technologies for digital interoperability in the European railway domain
+
+- [Leveraging semantic technologies for digital interoperability in the European railway domain](ch_4_introduction.md)
+    - [Introduction](ch_4.1_introduction.md)
+    - [Related work](ch_4.2_related-work.md)
+    - [Data sources and use case](ch_4.3_data-and-use-case.md)
+        - [ERA's base registries](ch_4.3.1_base-registries.md)
+            - [Register of Infrastructure](ch_4.3.1.1_rinf.md)
+            - [Register of Authorised types of Vehicles](ch_4.3.1.2_eratv.md)
+            - [Centralised Virtual Vehicle Register](ch_4.3.1.3_cvvr.md)
+        - [External data source](ch_4.3.2_external.md)
+            - [Connectivity data in the Utrecht area](ch_4.3.2.1_utrecth.md)
+        - [Use case: Route Compatibility Check](ch_4.3.3_external.md)
+    - [Proposed solution](ch_4.4_solution.md)
+    - [Discussion](ch_4.5_discussion.md)
+    - [Conclusion and future work](ch_4.6_conclusion.md)
+
+## Conclusions
+
+- [Conclusions](ch_5_introduction.md)
+    - [Review of RQ1 and H1](ch_5.1_review-rq1.md)
+    - [Review of RQ2 and H2](ch_5.2_review-rq2.md)
+    - [Review of RQ3 and H3](ch_5.3_review-rq3.md)
+    - [Future work](ch_5.4_future-work.md)
+    - [Concluding remarks](ch_5.5_concluding-remarks.md)

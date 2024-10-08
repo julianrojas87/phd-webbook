@@ -4,3 +4,12 @@ language = "en"
 multilingual = false
 src = "src"
 title = "Decentralised Linked Data architectures for the transport domain"
+
+[build]
+build-dir = "docs"
+
+[preprocessor.bib]
+bibliography = "bibliography/refs.bib"
+title = "References"
+hb-tpl = "bibliography/reference-template.hbs"
+cite-hb-tpl = "bibliography/citation-template.hbs"
