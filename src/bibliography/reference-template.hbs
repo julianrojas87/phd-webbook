@@ -1,7 +1,7 @@
 {{#if citation_key}}
 
-<div class="bib_div">
-    <a id="{{citation_key}}">[{{index}}]</a> - {{#if authors}}{{#each authors as |author|}}{{#each author as
+<div data-citation-title="{{title}}" class="bib_div">
+    <span id="{{citation_key}}">[{{index}}]</span> {{#if authors}}{{#each authors as |author|}}{{#each author as
     |name|}}{{name}}{{#unless @last}}, {{/unless}}{{/each}}{{#unless @last}} and {{/unless}}{{/each}} -
     {{/if}}{{#if title}}{{#if url}}<a href="{{url}}" target="_blank">{{/if}}<cite>{{title}}</cite>{{#if
         url}}</a>{{/if}}.{{/if}} - {{#if pub_year}}{{pub_year}}.{{/if}}

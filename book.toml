@@ -13,3 +13,10 @@ bibliography = "bibliography/refs.bib"
 title = "References"
 hb-tpl = "bibliography/reference-template.hbs"
 cite-hb-tpl = "bibliography/citation-template.hbs"
+
+[output.html]
+git-repository-url = "https://github.com/julianrojas87/phd-webbook"
+additional-js = [
+    "src/bibliography/load-citations.js",
+    "src/bibliography/bibtex-parser.js"
+]
