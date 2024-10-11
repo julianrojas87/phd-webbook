@@ -1,4 +1,4 @@
-# Introduction
+# 1. Introduction
 
 *"The nice thing about standards is that you have so many to choose from"*
 <div style="text-align: right">— Andrew Tanenbaum, professor at VU University Amsterdam</div>

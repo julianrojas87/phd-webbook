@@ -1,4 +1,4 @@
-# Linked Data and related system architectures
+# 1.1. Linked Data and related system architectures
 
 Above I mentioned that this dissertation studies how data interoperability can be start to be tackled in practice with Linked Data technologies. But what are Linked Data technologies and how do they work? In this section, I provide a brief overview of the main concepts and system architectures built for Linked Data technologies.
 
