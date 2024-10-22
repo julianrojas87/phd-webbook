@@ -206,11 +206,11 @@ Faculty of Engineering and Architecure, Ghent University</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="1-introduction"><a class="header" href="#1-introduction">1. Introduction</a></h1>
 <p><em>"The nice thing about standards is that you have so many to choose from"</em></p>
 <div style="text-align: right">— Andrew Tanenbaum, professor at VU University Amsterdam</div>
-<p>The last couple of decades have witnessed a rapid and transformative evolution of data-related technologies. We have seen the discussion moving from Big Data [<span data-citation-key="Marx_Nature_2013"><a href="bibliography.html#Marx_Nature_2013">25</a></span>, <span data-citation-key="Chen_MNA_2014"><a href="bibliography.html#Chen_MNA_2014">26</a></span>], which gained traction at the beginning of the century with the rise of Web traffic and the accelerated growth of companies like Google, Amazon, Meta, etc; all the way to transversal and all-encompassing data-driven economies [<span data-citation-key="Richter_IIC_2019"><a href="bibliography.html#Richter_IIC_2019">27</a></span>, <span data-citation-key="Cavanillas_SC_2016"><a href="bibliography.html#Cavanillas_SC_2016">28</a></span>] supported on Data Spaces [<span data-citation-key="Curry_SIP_2022"><a href="bibliography.html#Curry_SIP_2022">29</a></span>, <span data-citation-key="Prinz_SC_2022"><a href="bibliography.html#Prinz_SC_2022">30</a></span>, <span data-citation-key="Otto_EM_2019"><a href="bibliography.html#Otto_EM_2019">31</a></span>, <span data-citation-key="Curry_SC_2020"><a href="bibliography.html#Curry_SC_2020">32</a></span>]. One key challenge has been and continues to be at the core of the data-related technological evolution: data interoperability [<span data-citation-key="Pagano_DSC_2013"><a href="bibliography.html#Pagano_DSC_2013">33</a></span>, <span data-citation-key="Kadadi_ICBD_2014"><a href="bibliography.html#Kadadi_ICBD_2014">34</a></span>]. Recent attempts at understanding the complexities and challenges for achieving interoperability across data systems, agree on presenting a multidimensional view of it, showing that it goes beyond a mere technical issue and that a multidisciplinary effort would be required to address it [<span data-citation-key="EUC_PO_2017"><a href="bibliography.html#EUC_PO_2017">12</a></span>, <span data-citation-key="Candela_DL_2010"><a href="bibliography.html#Candela_DL_2010">13</a></span>]. This doctoral dissertation shows how data interoperability can start to be tackled with Semantic Web [<span data-citation-key="Shadbolt_IIS_2006"><a href="bibliography.html#Shadbolt_IIS_2006">35</a></span>], Linked Data [<span data-citation-key="Bizer_IJSWIS_2009"><a href="bibliography.html#Bizer_IJSWIS_2009">15</a></span>] and Knowledge Graph [<span data-citation-key="Hogan_ACM_2021"><a href="bibliography.html#Hogan_ACM_2021">36</a></span>] technologies, concretely by showing real examples where these technologies have been applied in the transport domain.</p>
-<p>The concepts of Semantic Web, Linked Data and Knowledge Graph represent a progressive evolution [<span data-citation-key="Scherp_TGDK_2024"><a href="bibliography.html#Scherp_TGDK_2024">37</a></span>] of the original vision introduced by Tim Berners-Lee et al [<span data-citation-key="Berners-Lee_SA_2001"><a href="bibliography.html#Berners-Lee_SA_2001">1</a></span>], aiming to extend the capabilities of the Web by adding structure and meaning to its content through metadata and ontologies. Each term comprises different aspects and in their own time, had a slightly different focus: Semantic Web emphasised semantic enrichment of Web content, Linked Data highlighted the importance of interconnection of data sources published over the Web and Knowledge Graphs continue to prioritise the representation of knowledge as graph-based structures. Nevertheless, they all share the same foundational and technological principles, having RDF<sup class="footnote-reference"><a href="#fn1">1</a></sup> and some of its related standards as common denominators. In this doctoral dissertation, I will continue to refer in general to these sets of concepts and technologies as Linked Data technologies given its focus on publishing interoperable data on the Web.</p>
-<p>Linked Data technologies were originally conceived as eminently decentralised technologies that would allow the development of applications, seamlessly accessing, querying and processing data from different locations and providers over the Web. This would be possible thanks to the existence of an also decentralised network of ontologies through which these applications (a.k.a <em>intelligent agents</em> [<span data-citation-key="Hendler_Nature_1999"><a href="bibliography.html#Hendler_Nature_1999">38</a></span>]) would perform logical reasoning and understand the data sources they represent. However, in practice the implementation of Linked Data technologies has not been really decentralised and has focused mainly on the development of centralised storage and querying technologies of semantically annotated data [<span data-citation-key="Ali_VLDB_2022"><a href="bibliography.html#Ali_VLDB_2022">11</a></span>]. A proof of this is the fact that currently the main highlights of Linked Data technologies are massively centralised knowledge graphs such as Wikidata<sup class="footnote-reference"><a href="#fn2">2</a></sup> and centralised data models such as schema.org<sup class="footnote-reference"><a href="#fn3">3</a></sup> [<span data-citation-key="Polleres_SW_2020"><a href="bibliography.html#Polleres_SW_2020">39</a></span>]. The reasons behind this deviation from the original vision may be attributed to the additional challenges that truly decentralised system architectures face regarding scalability and query performance [<span data-citation-key="Verborgh_ISWC_2018"><a href="bibliography.html#Verborgh_ISWC_2018">40</a></span>]. Yet, from a diametrically opposed point of view, it remains a practical impossibility to consider the centralisation of all data on the Web<sup class="footnote-reference"><a href="#fn4">4</a></sup> and in many cases, even within single organisations. This leads to considering in-between solutions as the most likely scenario towards the future, having the recent initiatives of Data Spaces as examples, advocating for controlled, trustful and decentralised data ecosystems [<span data-citation-key="Otto_EM_2019"><a href="bibliography.html#Otto_EM_2019">31</a></span>, <span data-citation-key="Curry_SC_2020"><a href="bibliography.html#Curry_SC_2020">32</a></span>], where efficient and automated data access would be made possible across a finite set of trusted data stakeholders. This PhD work embraces this vision and focuses on studying practical solutions, based on Linked Data technologies, that could enable the creation of decentralised applications over the Web.</p>
-<p>Historically there has been a predominant negative perception in industry about Linked Data technologies, which are usually deemed by practitioners as too complex for practical scenarios and not production-ready<sup class="footnote-reference"><a href="#fn5">5</a></sup> <sup class="footnote-reference"><a href="#fn6">6</a></sup> <sup class="footnote-reference"><a href="#fn7">7</a></sup> <sup class="footnote-reference"><a href="#fn8">8</a></sup> <sup class="footnote-reference"><a href="#fn9">9</a></sup> [<span data-citation-key="Marshall_HT_2003"><a href="bibliography.html#Marshall_HT_2003">41</a></span>]. These perceptions started to change in recent years, specially since the announcement of the Google Knowledge Graph <sup class="footnote-reference"><a href="#fn10">10</a></sup> , and currently we can observe an increased adoption with industrial examples in the biomedical [<span data-citation-key="Salvadores_SW_2013"><a href="bibliography.html#Salvadores_SW_2013">42</a></span>], pharmaceutical [<span data-citation-key="Fernandez_ESWC_2020"><a href="bibliography.html#Fernandez_ESWC_2020">43</a></span>], manufacturing [<span data-citation-key="Kalayci_ISWC_2020"><a href="bibliography.html#Kalayci_ISWC_2020">44</a></span>, <span data-citation-key="Hubauer_IWSW_2018"><a href="bibliography.html#Hubauer_IWSW_2018">45</a></span>], tourism<sup class="footnote-reference"><a href="#fn11">11</a></sup> , news<sup class="footnote-reference"><a href="#fn12">12</a></sup> [<span data-citation-key="Kobilarov_SBH_2009"><a href="bibliography.html#Kobilarov_SBH_2009">46</a></span>] and (e-)commerce sectors<sup class="footnote-reference"><a href="#fn13">13</a></sup> <sup class="footnote-reference"><a href="#fn14">14</a></sup> [<span data-citation-key="Lassila_SW_2023"><a href="bibliography.html#Lassila_SW_2023">47</a></span>, <span data-citation-key="Li_CIKM_2020"><a href="bibliography.html#Li_CIKM_2020">48</a></span>], among others. This doctoral dissertation tries to be one more piece of evidence coming from the transport sector.</p>
-<p>I opted to focus on the transport domain and study the application of Linked Data technologies mainly due to the high importance that transportation has in our daily lives, for instance, influencing how much time we spend getting to school or work and determining where we choose to live. Similarly, the transport sector offers challenging organisational and data ecosystems. Public and private organisations (varying depending on the country) need to interact, putting forward a high demand for interoperability solutions within and across country borders [<span data-citation-key="MaaSAlliance_2021"><a href="bibliography.html#MaaSAlliance_2021">49</a></span>]. Also, heterogeneous datasets of spatiotemporal nature need to be integrated to support the provision of complex and critical transportation services such as public transportation and logistics services. I had the fortune to be involved in several transport-related projects during these PhD years, which provided me with concrete goals and real use case scenarios to study Linked Data technologies as a potential interoperability solution.</p>
+<p>The last couple of decades have witnessed a rapid and transformative evolution of data-related technologies. We have seen the discussion moving from Big Data [<span data-citation-key="Marx_Nature_2013"><a href="bibliography.html#Marx_Nature_2013">28</a></span>, <span data-citation-key="Chen_MNA_2014"><a href="bibliography.html#Chen_MNA_2014">29</a></span>], which gained traction at the beginning of the century with the rise of Web traffic and the accelerated growth of companies like Google, Amazon, Meta, etc; all the way to transversal and all-encompassing data-driven economies [<span data-citation-key="Richter_IIC_2019"><a href="bibliography.html#Richter_IIC_2019">30</a></span>, <span data-citation-key="Cavanillas_SC_2016"><a href="bibliography.html#Cavanillas_SC_2016">31</a></span>] supported on Data Spaces [<span data-citation-key="Curry_SIP_2022"><a href="bibliography.html#Curry_SIP_2022">32</a></span>, <span data-citation-key="Prinz_SC_2022"><a href="bibliography.html#Prinz_SC_2022">33</a></span>, <span data-citation-key="Otto_EM_2019"><a href="bibliography.html#Otto_EM_2019">34</a></span>, <span data-citation-key="Curry_SC_2020"><a href="bibliography.html#Curry_SC_2020">35</a></span>]. One key challenge has been and continues to be at the core of the data-related technological evolution: data interoperability [<span data-citation-key="Pagano_DSC_2013"><a href="bibliography.html#Pagano_DSC_2013">36</a></span>, <span data-citation-key="Kadadi_ICBD_2014"><a href="bibliography.html#Kadadi_ICBD_2014">37</a></span>]. Recent attempts at understanding the complexities and challenges for achieving interoperability across data systems, agree on presenting a multidimensional view of it, showing that it goes beyond a mere technical issue and that a multidisciplinary effort would be required to address it [<span data-citation-key="EUC_PO_2017"><a href="bibliography.html#EUC_PO_2017">12</a></span>, <span data-citation-key="Candela_DL_2010"><a href="bibliography.html#Candela_DL_2010">13</a></span>]. This doctoral dissertation shows how data interoperability can start to be tackled with Semantic Web [<span data-citation-key="Shadbolt_IIS_2006"><a href="bibliography.html#Shadbolt_IIS_2006">38</a></span>], Linked Data [<span data-citation-key="Bizer_IJSWIS_2009"><a href="bibliography.html#Bizer_IJSWIS_2009">15</a></span>] and Knowledge Graph [<span data-citation-key="Hogan_ACM_2021"><a href="bibliography.html#Hogan_ACM_2021">39</a></span>] technologies, concretely by showing real examples where these technologies have been applied in the transport domain.</p>
+<p>The concepts of Semantic Web, Linked Data and Knowledge Graph represent a progressive evolution [<span data-citation-key="Scherp_TGDK_2024"><a href="bibliography.html#Scherp_TGDK_2024">40</a></span>] of the original vision introduced by Tim Berners-Lee et al [<span data-citation-key="Berners-Lee_SA_2001"><a href="bibliography.html#Berners-Lee_SA_2001">1</a></span>], aiming to extend the capabilities of the Web by adding structure and meaning to its content through metadata and ontologies. Each term comprises different aspects and in their own time, had a slightly different focus: Semantic Web emphasised semantic enrichment of Web content, Linked Data highlighted the importance of interconnection of data sources published over the Web and Knowledge Graphs continue to prioritise the representation of knowledge as graph-based structures. Nevertheless, they all share the same foundational and technological principles, having RDF<sup class="footnote-reference"><a href="#fn1">1</a></sup> and some of its related standards as common denominators. In this doctoral dissertation, I will continue to refer in general to these sets of concepts and technologies as Linked Data technologies given its focus on publishing interoperable data on the Web.</p>
+<p>Linked Data technologies were originally conceived as eminently decentralised technologies that would allow the development of applications, seamlessly accessing, querying and processing data from different locations and providers over the Web. This would be possible thanks to the existence of an also decentralised network of ontologies through which these applications (a.k.a <em>intelligent agents</em> [<span data-citation-key="Hendler_Nature_1999"><a href="bibliography.html#Hendler_Nature_1999">41</a></span>]) would perform logical reasoning and understand the data sources they represent. However, in practice the implementation of Linked Data technologies has not been really decentralised and has focused mainly on the development of centralised storage and querying technologies of semantically annotated data [<span data-citation-key="Ali_VLDB_2022"><a href="bibliography.html#Ali_VLDB_2022">11</a></span>]. A proof of this is the fact that currently the main highlights of Linked Data technologies are massively centralised knowledge graphs such as Wikidata<sup class="footnote-reference"><a href="#fn2">2</a></sup> and centralised data models such as schema.org<sup class="footnote-reference"><a href="#fn3">3</a></sup> [<span data-citation-key="Polleres_SW_2020"><a href="bibliography.html#Polleres_SW_2020">42</a></span>]. The reasons behind this deviation from the original vision may be attributed to the additional challenges that truly decentralised system architectures face regarding scalability and query performance [<span data-citation-key="Verborgh_ISWC_2018"><a href="bibliography.html#Verborgh_ISWC_2018">43</a></span>]. Yet, from a diametrically opposed point of view, it remains a practical impossibility to consider the centralisation of all data on the Web<sup class="footnote-reference"><a href="#fn4">4</a></sup> and in many cases, even within single organisations. This leads to considering in-between solutions as the most likely scenario towards the future, having the recent initiatives of Data Spaces as examples, advocating for controlled, trustful and decentralised data ecosystems [<span data-citation-key="Otto_EM_2019"><a href="bibliography.html#Otto_EM_2019">34</a></span>, <span data-citation-key="Curry_SC_2020"><a href="bibliography.html#Curry_SC_2020">35</a></span>], where efficient and automated data access would be made possible across a finite set of trusted data stakeholders. This PhD work embraces this vision and focuses on studying practical solutions, based on Linked Data technologies, that could enable the creation of decentralised applications over the Web.</p>
+<p>Historically there has been a predominant negative perception in industry about Linked Data technologies, which are usually deemed by practitioners as too complex for practical scenarios and not production-ready<sup class="footnote-reference"><a href="#fn5">5</a></sup> <sup class="footnote-reference"><a href="#fn6">6</a></sup> <sup class="footnote-reference"><a href="#fn7">7</a></sup> <sup class="footnote-reference"><a href="#fn8">8</a></sup> <sup class="footnote-reference"><a href="#fn9">9</a></sup> [<span data-citation-key="Marshall_HT_2003"><a href="bibliography.html#Marshall_HT_2003">44</a></span>]. These perceptions started to change in recent years, specially since the announcement of the Google Knowledge Graph <sup class="footnote-reference"><a href="#fn10">10</a></sup> , and currently we can observe an increased adoption with industrial examples in the biomedical [<span data-citation-key="Salvadores_SW_2013"><a href="bibliography.html#Salvadores_SW_2013">45</a></span>], pharmaceutical [<span data-citation-key="Fernandez_ESWC_2020"><a href="bibliography.html#Fernandez_ESWC_2020">46</a></span>], manufacturing [<span data-citation-key="Kalayci_ISWC_2020"><a href="bibliography.html#Kalayci_ISWC_2020">47</a></span>, <span data-citation-key="Hubauer_IWSW_2018"><a href="bibliography.html#Hubauer_IWSW_2018">48</a></span>], tourism<sup class="footnote-reference"><a href="#fn11">11</a></sup> , news<sup class="footnote-reference"><a href="#fn12">12</a></sup> [<span data-citation-key="Kobilarov_SBH_2009"><a href="bibliography.html#Kobilarov_SBH_2009">49</a></span>] and (e-)commerce sectors<sup class="footnote-reference"><a href="#fn13">13</a></sup> <sup class="footnote-reference"><a href="#fn14">14</a></sup> [<span data-citation-key="Lassila_SW_2023"><a href="bibliography.html#Lassila_SW_2023">50</a></span>, <span data-citation-key="Li_CIKM_2020"><a href="bibliography.html#Li_CIKM_2020">51</a></span>], among others. This doctoral dissertation tries to be one more piece of evidence coming from the transport sector.</p>
+<p>I opted to focus on the transport domain and study the application of Linked Data technologies mainly due to the high importance that transportation has in our daily lives, for instance, influencing how much time we spend getting to school or work and determining where we choose to live. Similarly, the transport sector offers challenging organisational and data ecosystems. Public and private organisations (varying depending on the country) need to interact, putting forward a high demand for interoperability solutions within and across country borders [<span data-citation-key="MaaSAlliance_2021"><a href="bibliography.html#MaaSAlliance_2021">52</a></span>]. Also, heterogeneous datasets of spatiotemporal nature need to be integrated to support the provision of complex and critical transportation services such as public transportation and logistics services. I had the fortune to be involved in several transport-related projects during these PhD years, which provided me with concrete goals and real use case scenarios to study Linked Data technologies as a potential interoperability solution.</p>
 <p>This PhD dissertation, studies if and how data interoperability in the transport domain could be addressed in practice with Linked Data technologies. First in <a href="ch_1.1_ld-and-sa.html">section 1.1</a>, a brief introduction is given to the basic concepts around Linked Data technologies and the related system architectures proposed for its implementation. Then, <a href="ch_1.2_eu-interop.html">section 1.2</a> presents the context and motivations for this work, which are framed within the European strategy for interoperability. The main reason being that the application scenarios studied in this work, took place in the European context. <a href="ch_1.3_web-apis.html">Section 1.3</a> elaborates on more concrete technical challenges related to under-specified top-down initiatives advocating for data interoperability by design, also aggravated by a lack of truly interoperable, performant and cost-efficient technical solutions. Later in <a href="ch_1.4_research-goals.html">section 1.4</a>, the concrete research challenges are described, followed by the main contributions of this work in <a href="ch_1.5_contributions.html">section 1.5</a>. <a href="ch_1.6_impact.html">Section 1.6</a> presents the impact achieved thanks to having the opportunity to work on a set of real use cases, and <a href="ch_1.7_publications.html">section 1.7</a> lists all the related publications. Lastly, <a href="ch_1.8_outline.html">section 1.8</a> describes the outline of the rest of this PhD dissertation.</p>
 <div class="footnote-definition" id="fn1"><sup class="footnote-definition-label">1</sup>
 <p><a href="https://www.w3.org/TR/rdf11-primer/">https://www.w3.org/TR/rdf11-primer/</a></p>
@@ -355,7 +355,52 @@ Faculty of Engineering and Architecure, Ghent University</p>
 <div class="footnote-definition" id="fn25"><sup class="footnote-definition-label">5</sup>
 <p>See also: <a href="https://force11.org/info/the-fair-data-principles/">https://force11.org/info/the-fair-data-principles/</a></p>
 </div>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="towards-cost-efficient-web-apis"><a class="header" href="#towards-cost-efficient-web-apis">Towards cost-efficient Web APIs</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="13-towards-cost-efficient-web-apis"><a class="header" href="#13-towards-cost-efficient-web-apis">1.3. Towards cost-efficient Web APIs</a></h1>
+<p>The previous section shows multiple existing top-down initiatives and legal frameworks in the EU advocating for data interoperability by design and by default. Yet, incentives are needed (e.g,. standardised technical specifications, reference implementations, examples of migration from legacy systems, etc.) in order for organisations to put the effort into adopting and implementing new technological solutions [<span data-citation-key="EUC_2022_721"><a href="bibliography.html#EUC_2022_721">25</a></span>].</p>
+<p>In recent years, an increased adoption of Linked Data technologies can be observed throughout different EU dependencies<sup class="footnote-reference"><a href="#fn26">1</a></sup> <sup class="footnote-reference"><a href="#fn27">2</a></sup> <sup class="footnote-reference"><a href="#fn28">3</a></sup> and initiatives following the call for developing domain-driven Data Spaces <sup class="footnote-reference"><a href="#fn29">4</a></sup>. Concretely for the transport domain, one initiative called the PrepDSpace4Mobility<sup class="footnote-reference"><a href="#fn30">5</a></sup>, was launched for laying out the requirements for a EU mobility Data Space. This initiative produced a set of recommendations for interoperability where Linked Data technologies are recommended as a foundational building block. Regarding Technical interoperability for data exchange, they mention the ETSI CIM NGSI-LD standard <sup class="footnote-reference"><a href="#fn31">6</a></sup> as an alternative for a standardised and general-purpose information model and API specification. However, despite adopting the W3C standard JSON-LD RDF serialisation<sup class="footnote-reference"><a href="#fn32">7</a></sup>, current NGSI-LD implementations have not been designed to manage and query data as proper RDF graphs, disregarding the semantic capabilities and the graph-based nature of the data, ultimately becoming only an HTTP API and JSON -based syntax specification [<span data-citation-key="Abid_2022"><a href="bibliography.html#Abid_2022">26</a></span>]. Furthermore, the query expressivity of a NGSI-LD API does not allow it to handle well known and legally mandated use cases such as trip planning over transport networks [<span data-citation-key="EUC_2017_1926"><a href="bibliography.html#EUC_2017_1926">14</a></span>].</p>
+<p>An almost ubiquitous assumption made when designing client-server Web APIs that support some sort of query language –where query language may range from simple resource identifier-based queries<sup class="footnote-reference"><a href="#fn33">8</a></sup> to fully-fledged SPARQL queries<sup class="footnote-reference"><a href="#fn34">9</a></sup> – is that the server-side must be capable of interpreting and fully processing any query expressible by the query language in question. In practice, this is often the case but is by no means a requirement for implementing a Web API supporting a certain query language. An alternative implementation for a SPARQL API, for example, can have a client-side library/application accepting SPARQL queries, decomposing them into a set of HTTP requests (supporting a possibly different query language) that retrieve a relevant subset of the data from the server-side, and then proceed to solve the query fully on the client-side<sup class="footnote-reference"><a href="#fn35">10</a></sup>.</p>
+<p>This is the basic principle behind Triple Pattern Fragments (TPF) and in general, behind the Linked Data Fragments (LDF) conceptual framework [<span data-citation-key="Verborgh_2016"><a href="bibliography.html#Verborgh_2016">27</a></span>]. LDF provides a uniform view on all possible APIs over an RDF dataset (see <a href="ch_1.3_web-apis.html#figure1.3">figure 1.3</a>), where every API partitions the dataset into a particular set of fragments based on a specific selector pattern (e.g., all triples with the same subject, all triples of entities with common geospatial characteristics, etc). Each API fragmentation strategy defines a level of granularity that limits how specific a client request can be. More expressive query languages allow for higher granularity. This establishes a trade-off in terms of bandwidth (i.e., amount of data transferred on every API request) and server computational cost vs client processing time. Server-side cost in APIs is therefore dependent on the expressiveness of the query language supported by said API , which is directly correlated to the complexity of the computations needed by the server to resolve individual client requests.</p>
+<p><img src="img/figure_1.3.png" alt="Figure 1.3" /></p>
+<div id="figure1.3" style="text-align: center"><strong>Figure 1.3.</strong> Every RDF Web API offers a set of Linked Data Fragments from an RDF dataset. These fragments differ in the granularity of the data they contain, and thus the cost to create them. (Source [<span data-citation-key="Verborgh_2016">[27](bibliography.html#Verborgh_2016)</span>]).</div>
+<p>LDF not only include data from the RDF dataset they originated from, but are also complemented with additional metadata and hypermedia controls that allow clients to discover and traverse the set of fragments in meaningful ways, to facilitate query solving processes. This aligns with the HATEOAS<sup class="footnote-reference"><a href="#fn36">11</a></sup> (Hypermedia As The Engine Of Application State) architectural constraint defined by REST [@Fielding_2000] and also shows that semantic annotations are not only useful to describe the meaning of the data present in a dataset but also of the interfaces that provide access to the data.</p>
+<p>This PhD dissertation subscribes to the rationale presented above on the architectural characteristics of (RDF) Web APIs and studies the design of semantically interoperable and cost-efficient Web APIs over data commonly present in the transport domain. Three particular types of datasets and related use cases are described and studied in this work, namely (i) publishing of bicycle parking infrastructure, (ii) trip planning over public transport timetables and (iii) route compatibility checks over railway infrastructure. For each case, one or more specific LDF -based APIs are proposed together with their supporting system architecture and aiming on decentralised application operation.</p>
+<p><a href="ch_1.3_web-apis.html#figure1.4">Figure 1.4</a> presents an overview of these three scenarios, focusing on the main APIs design that support each use case. It reflects the vision pursued in this work of a decentralised setup, where data is published across the Web by different organisations using cost-efficient API designs, and applications can be independently created (possibly by third-parties) to seamlessly interact with one or more of these interfaces thanks to common semantics describing both the data and their interfaces. Concretely, in the case of publishing bicycle infrastructure data, an LDF -based API is designed where data is partitioned following a subject-based fragmentation strategy, i.e., each fragment contains the complete set of triples that describe a certain bicycle parking facility. Additionally, a catalog based on the W3C standard DCAT is made available as an initial index fragment containing semantically described hypermedia links towards every other parking fragment. The second case describes an LDF -based API where data is partitioned based on the temporal properties of entities representing public transport vehicles departures. This fragmentation strategy resembles a 1-dimensional simple pagination with each fragment including semantically described hypermedia links towards the previous and next fragment in the set. Lastly, the third API design partitions railway infrastructure data based on entity geospatial characteristics. In this particular case no specific hypermedia links are made explicit among fragments, however, each fragment includes additional semantic metadata descriptions about the possible interaction mechanisms available on the API . The rationale for these specific API design strategies are described in detail in each corresponding chapter as depicted in <a href="ch_1.3_web-apis.html#figure1.4">figure 1.4</a>.</p>
+<p><img src="img/figure_1.4.png" alt="Figure 1.4" /></p>
+<div id="figure1.4" style="text-align: center"><strong>Figure 1.4.</strong> Overview of the LDF -based API design for each of the data types studied in this work.</div>
+<p>Multiple research-oriented challenges arose from following these alternative API design strategies and in general, from applying Linked Data technologies in each of the previously mentioned transport use cases. In the next section we define the main research goals that were addressed in this doctoral dissertation.</p>
+<div class="footnote-definition" id="fn26"><sup class="footnote-definition-label">1</sup>
+<p>EU Publications Office: (i) EU Vocabularies (<a href="https://op.europa.eu/en/web/eu-vocabularies/ontologies">https://op.europa.eu/en/web/eu-vocabularies/ontologies</a>) and (ii) Cellar Knowledge Graph (<a href="https://op.europa.eu/en/web/cellar/cellar-data/metadata/knowledge-graph">https://op.europa.eu/en/web/cellar/cellar-data/metadata/knowledge-graph</a>)</p>
+</div>
+<div class="footnote-definition" id="fn27"><sup class="footnote-definition-label">2</sup>
+<p>Interoperable Europe: SEMIC core vocabularies and application profiles: <a href="https://joinup.ec.europa.eu/collection/semic-support-centre/specifications">https://joinup.ec.europa.eu/collection/semic-support-centre/specifications</a></p>
+</div>
+<div class="footnote-definition" id="fn28"><sup class="footnote-definition-label">3</sup>
+<p>The EU Knowledge Graph: <a href="https://linkedopendata.eu/wiki/The_EU_Knowledge_Graph">https://linkedopendata.eu/wiki/The_EU_Knowledge_Graph</a></p>
+</div>
+<div class="footnote-definition" id="fn29"><sup class="footnote-definition-label">4</sup>
+<p><a href="https://digital-strategy.ec.europa.eu/en/policies/data-spaces">https://digital-strategy.ec.europa.eu/en/policies/data-spaces</a></p>
+</div>
+<div class="footnote-definition" id="fn30"><sup class="footnote-definition-label">5</sup>
+<p><a href="https://mobilitydataspace-csa.eu/">https://mobilitydataspace-csa.eu/</a></p>
+</div>
+<div class="footnote-definition" id="fn31"><sup class="footnote-definition-label">6</sup>
+<p><a href="https://www.etsi.org/deliver/etsi_gs/CIM/001_099/013/02.01.01_60/gs_CIM013v020101p.pdf">https://www.etsi.org/deliver/etsi_gs/CIM/001_099/013/02.01.01_60/gs_CIM013v020101p.pdf</a></p>
+</div>
+<div class="footnote-definition" id="fn32"><sup class="footnote-definition-label">7</sup>
+<p><a href="https://www.w3.org/TR/json-ld11/">https://www.w3.org/TR/json-ld11/</a></p>
+</div>
+<div class="footnote-definition" id="fn33"><sup class="footnote-definition-label">8</sup>
+<p>For example: <a href="https://example.org/resource?id=948293">https://example.org/resource?id=948293</a></p>
+</div>
+<div class="footnote-definition" id="fn34"><sup class="footnote-definition-label">9</sup>
+<p><a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></p>
+</div>
+<div class="footnote-definition" id="fn35"><sup class="footnote-definition-label">10</sup>
+<p>This rationale is further elaborated in: <a href="https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/">https://ruben.verborgh.org/blog/2021/12/23/reflections-of-knowledge/</a></p>
+</div>
+<div class="footnote-definition" id="fn36"><sup class="footnote-definition-label">11</sup>
+<p><a href="https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">https://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven</a></p>
+</div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="research-goals"><a class="header" href="#research-goals">Research goals</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contributions"><a class="header" href="#contributions">Contributions</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="impact"><a class="header" href="#impact">Impact</a></h1>
@@ -466,52 +511,52 @@ function copyToClipboard(text) {
 </script>
 <style></style>
 <div data-citation-title="The big challenges of big data" class="bib_div">
-    <span id="Marx_Nature_2013">[25]</span> Marx, Vivien -
+    <span id="Marx_Nature_2013">[28]</span> Marx, Vivien -
     <a href="https://doi.org/10.1038/498255a" target="_blank"><cite>The big challenges of big data</cite></a>. - 2013.
 </div>
 <br />
 <div data-citation-title="Big Data: A Survey" class="bib_div">
-    <span id="Chen_MNA_2014">[26]</span> Min Chen and Shiwen Mao and Yunhao Liu -
+    <span id="Chen_MNA_2014">[29]</span> Min Chen and Shiwen Mao and Yunhao Liu -
     <a href="https://doi.org/10.1007/s11036-013-0489-0" target="_blank"><cite>Big Data: A Survey</cite></a>. - 2014.
 </div>
 <br />
 <div data-citation-title="The Data Sharing Economy: On the Emergence of New Intermediaries" class="bib_div">
-    <span id="Richter_IIC_2019">[27]</span> Heiko Richter and Peter R. Slowinski -
+    <span id="Richter_IIC_2019">[30]</span> Heiko Richter and Peter R. Slowinski -
     <a href="https://doi.org/10.1007/s40319-018-00777-7" target="_blank"><cite>The Data Sharing Economy: On the Emergence of New Intermediaries</cite></a>. - 2019.
 </div>
 <br />
 <div data-citation-title="New Horizons for a Data-Driven Economy: A Roadmap for Usage and Exploitation of Big Data in Europe" class="bib_div">
-    <span id="Cavanillas_SC_2016">[28]</span> Cavanillas, J. M. and Curry, E. and Wahlster, W. (eds.) -
+    <span id="Cavanillas_SC_2016">[31]</span> Cavanillas, J. M. and Curry, E. and Wahlster, W. (eds.) -
     <a href="https://doi.org/10.1007/978-3-319-21569-3" target="_blank"><cite>New Horizons for a Data-Driven Economy: A Roadmap for Usage and Exploitation of Big Data in Europe</cite></a>. - 2016.
 </div>
 <br />
 <div data-citation-title="Data Spaces: Design, Deployment, and Future Directions" class="bib_div">
-    <span id="Curry_SIP_2022">[29]</span> Curry, Edward and Scerri, Simon and Tuikka, Tuomo -
+    <span id="Curry_SIP_2022">[32]</span> Curry, Edward and Scerri, Simon and Tuikka, Tuomo -
     <a href="https://doi.org/10.1007/978-3-030-98636-0_1" target="_blank"><cite>Data Spaces: Design, Deployment, and Future Directions</cite></a>. - 2022.
 </div>
 <br />
 <div data-citation-title="Designing Data Spaces: The Ecosystem Approach to Competitive Advantage" class="bib_div">
-    <span id="Prinz_SC_2022">[30]</span> Prinz, Wolfgang (ed.) -
+    <span id="Prinz_SC_2022">[33]</span> Prinz, Wolfgang (ed.) -
     <a href="https://doi.org/10.1007/978-3-030-93975-5" target="_blank"><cite>Designing Data Spaces: The Ecosystem Approach to Competitive Advantage</cite></a>. - 2022.
 </div>
 <br />
 <div data-citation-title="Designing a multi-sided data platform: findings from the International Data Spaces case" class="bib_div">
-    <span id="Otto_EM_2019">[31]</span> Boris Otto and Matthias Jarke -
+    <span id="Otto_EM_2019">[34]</span> Boris Otto and Matthias Jarke -
     <a href="https://doi.org/10.1007/s12525-019-00362-x" target="_blank"><cite>Designing a multi-sided data platform: findings from the International Data Spaces case</cite></a>. - 2019.
 </div>
 <br />
 <div data-citation-title="Real-time Linked Dataspaces: Enabling Data Ecosystems for Intelligent Systems" class="bib_div">
-    <span id="Curry_SC_2020">[32]</span> Curry, Edward (ed.) -
+    <span id="Curry_SC_2020">[35]</span> Curry, Edward (ed.) -
     <a href="https://doi.org/10.1007/978-3-030-29665-0" target="_blank"><cite>Real-time Linked Dataspaces: Enabling Data Ecosystems for Intelligent Systems</cite></a>. - 2020.
 </div>
 <br />
 <div data-citation-title="Data Interoperability" class="bib_div">
-    <span id="Pagano_DSC_2013">[33]</span> Pagano, Pasquale and Candela, Leonardo and Castelli, Donatella -
+    <span id="Pagano_DSC_2013">[36]</span> Pagano, Pasquale and Candela, Leonardo and Castelli, Donatella -
     <a href="https://doi.org/10.2481/dsj.GRDI-004" target="_blank"><cite>Data Interoperability</cite></a>. - 2013.
 </div>
 <br />
 <div data-citation-title="Challenges of data integration and interoperability in big data" class="bib_div">
-    <span id="Kadadi_ICBD_2014">[34]</span> Kadadi, Anirudh and Agrawal, Rajeev and Nyamful, Christopher and Atiq, Rahman -
+    <span id="Kadadi_ICBD_2014">[37]</span> Kadadi, Anirudh and Agrawal, Rajeev and Nyamful, Christopher and Atiq, Rahman -
     <a href="https://doi.org/10.1109/BigData.2014.7004486" target="_blank"><cite>Challenges of data integration and interoperability in big data</cite></a>. - 2014.
 </div>
 <br />
@@ -526,7 +571,7 @@ function copyToClipboard(text) {
 </div>
 <br />
 <div data-citation-title="The Semantic Web Revisited" class="bib_div">
-    <span id="Shadbolt_IIS_2006">[35]</span> Shadbolt, N. and Berners-Lee, T. and Hall, W. -
+    <span id="Shadbolt_IIS_2006">[38]</span> Shadbolt, N. and Berners-Lee, T. and Hall, W. -
     <a href="https://doi.org/10.1109/MIS.2006.62" target="_blank"><cite>The Semantic Web Revisited</cite></a>. - 2006.
 </div>
 <br />
@@ -536,12 +581,12 @@ function copyToClipboard(text) {
 </div>
 <br />
 <div data-citation-title="Knowledge Graphs" class="bib_div">
-    <span id="Hogan_ACM_2021">[36]</span> Hogan, Aidan and Blomqvist, Eva and Cochez, Michael and D’amato, Claudia and Melo, Gerard De and Gutierrez, Claudio and Kirrane, Sabrina and Gayo, José Emilio Labra and Navigli, Roberto and Neumaier, Sebastian and Ngomo, Axel-Cyrille Ngonga and Polleres, Axel and Rashid, Sabbir M. and Rula, Anisa and Schmelzeisen, Lukas and Sequeda, Juan and Staab, Steffen and Zimmermann, Antoine -
+    <span id="Hogan_ACM_2021">[39]</span> Hogan, Aidan and Blomqvist, Eva and Cochez, Michael and D’amato, Claudia and Melo, Gerard De and Gutierrez, Claudio and Kirrane, Sabrina and Gayo, José Emilio Labra and Navigli, Roberto and Neumaier, Sebastian and Ngomo, Axel-Cyrille Ngonga and Polleres, Axel and Rashid, Sabbir M. and Rula, Anisa and Schmelzeisen, Lukas and Sequeda, Juan and Staab, Steffen and Zimmermann, Antoine -
     <a href="https://doi.org/10.1145/3447772" target="_blank"><cite>Knowledge Graphs</cite></a>. - 2021.
 </div>
 <br />
 <div data-citation-title="Semantic Web: Past, Present, and Future" class="bib_div">
-    <span id="Scherp_TGDK_2024">[37]</span> Scherp, Ansgar and Groener, Gerd and Škoda, Petr and Hose, Katja and Vidal, Maria-Esther -
+    <span id="Scherp_TGDK_2024">[40]</span> Scherp, Ansgar and Groener, Gerd and Škoda, Petr and Hose, Katja and Vidal, Maria-Esther -
     <a href="https://drops.dagstuhl.de/entities/document/10.4230/TGDK.2.1.3" target="_blank"><cite>Semantic Web: Past, Present, and Future</cite></a>. - 2024.
 </div>
 <br />
@@ -551,7 +596,7 @@ function copyToClipboard(text) {
 </div>
 <br />
 <div data-citation-title="Is there an intelligent agent in your future?" class="bib_div">
-    <span id="Hendler_Nature_1999">[38]</span> Hendler, James -
+    <span id="Hendler_Nature_1999">[41]</span> Hendler, James -
     <a href="https://doi.org/10.1038/nature28027" target="_blank"><cite>Is there an intelligent agent in your future?</cite></a>. - 1999.
 </div>
 <br />
@@ -561,57 +606,57 @@ function copyToClipboard(text) {
 </div>
 <br />
 <div data-citation-title="A more decentralized vision for Linked Data" class="bib_div">
-    <span id="Polleres_SW_2020">[39]</span> Axel Polleres and Maulik Rajendra Kamdar and Javier David Fernández and Tania Tudorache and Mark Alan Musen -
+    <span id="Polleres_SW_2020">[42]</span> Axel Polleres and Maulik Rajendra Kamdar and Javier David Fernández and Tania Tudorache and Mark Alan Musen -
     <a href="https://doi.org/10.3233/SW-190380" target="_blank"><cite>A more decentralized vision for Linked Data</cite></a>. - 2020.
 </div>
 <br />
 <div data-citation-title="Decentralizing the Semantic Web through incentivized collaboration" class="bib_div">
-    <span id="Verborgh_ISWC_2018">[40]</span> Verborgh, Ruben -
+    <span id="Verborgh_ISWC_2018">[43]</span> Verborgh, Ruben -
     <a href="https://ceur-ws.org/Vol-2180/ISWC_2018_Outrageous_Ideas_paper_2.pdf" target="_blank"><cite>Decentralizing the Semantic Web through incentivized collaboration</cite></a>. - 2018.
 </div>
 <br />
 <div data-citation-title="Which semantic web?" class="bib_div">
-    <span id="Marshall_HT_2003">[41]</span> Marshall, Catherine C. and Shipman, Frank M. -
+    <span id="Marshall_HT_2003">[44]</span> Marshall, Catherine C. and Shipman, Frank M. -
     <a href="https://doi.org/10.1145/900051.900063" target="_blank"><cite>Which semantic web?</cite></a>. - 2003.
 </div>
 <br />
 <div data-citation-title="BioPortal as a dataset of linked biomedical ontologies and terminologies in RDF" class="bib_div">
-    <span id="Salvadores_SW_2013">[42]</span> Manuel Salvadores and Paul R. Alexander and Mark A. Musen and Natalya F. Noy -
+    <span id="Salvadores_SW_2013">[45]</span> Manuel Salvadores and Paul R. Alexander and Mark A. Musen and Natalya F. Noy -
     <a href="https://doi.org/10.3233/SW-2012-0086" target="_blank"><cite>BioPortal as a dataset of linked biomedical ontologies and terminologies in RDF</cite></a>. - 2013.
 </div>
 <br />
 <div data-citation-title="Enabling FAIR Clinical Data Standards with Linked Data" class="bib_div">
-    <span id="Fernandez_ESWC_2020">[43]</span> Fernández, Javier D. and Lasierra, Nelia and Clement, Didier and Mason, Huw and Robinson, Ivan -
+    <span id="Fernandez_ESWC_2020">[46]</span> Fernández, Javier D. and Lasierra, Nelia and Clement, Didier and Mason, Huw and Robinson, Ivan -
     <a href="https://doi.org/10.1007/978-3-030-62327-2_46" target="_blank"><cite>Enabling FAIR Clinical Data Standards with Linked Data</cite></a>. - 2020.
 </div>
 <br />
 <div data-citation-title="Semantic Integration of Bosch Manufacturing Data Using Virtual Knowledge Graphs" class="bib_div">
-    <span id="Kalayci_ISWC_2020">[44]</span> Kalaycı, Elem Güzel and Grangel González, Irlan and Lösch, Felix and Xiao, Guohui and ul-Mehdi, Anees and Kharlamov, Evgeny and Calvanese, Diego -
+    <span id="Kalayci_ISWC_2020">[47]</span> Kalaycı, Elem Güzel and Grangel González, Irlan and Lösch, Felix and Xiao, Guohui and ul-Mehdi, Anees and Kharlamov, Evgeny and Calvanese, Diego -
     <a href="https://doi.org/10.1007/978-3-030-62466-8_29" target="_blank"><cite>Semantic Integration of Bosch Manufacturing Data Using Virtual Knowledge Graphs</cite></a>. - 2020.
 </div>
 <br />
 <div data-citation-title="Use Cases of the Industrial Knowledge Graph at Siemens" class="bib_div">
-    <span id="Hubauer_IWSW_2018">[45]</span> Thomas Hubauer and Steffen Lamparter and Peter Haase and Daniel M. Herzig -
+    <span id="Hubauer_IWSW_2018">[48]</span> Thomas Hubauer and Steffen Lamparter and Peter Haase and Daniel M. Herzig -
     <a href="https://ceur-ws.org/Vol-2180/paper-86.pdf" target="_blank"><cite>Use Cases of the Industrial Knowledge Graph at Siemens</cite></a>. - 2018.
 </div>
 <br />
 <div data-citation-title="Media Meets Semantic Web -- How the BBC Uses DBpedia and Linked Data to Make Connections" class="bib_div">
-    <span id="Kobilarov_SBH_2009">[46]</span> Kobilarov, Georgi and Scott, Tom and Raimond, Yves and Oliver, Silver and Sizemore, Chris and Smethurst, Michael and Bizer, Christian and Lee, Robert -
+    <span id="Kobilarov_SBH_2009">[49]</span> Kobilarov, Georgi and Scott, Tom and Raimond, Yves and Oliver, Silver and Sizemore, Chris and Smethurst, Michael and Bizer, Christian and Lee, Robert -
     <a href="https://doi.org/10.1007/978-3-642-02121-3_53" target="_blank"><cite>Media Meets Semantic Web -- How the BBC Uses DBpedia and Linked Data to Make Connections</cite></a>. - 2009.
 </div>
 <br />
 <div data-citation-title="The OneGraph vision: Challenges of breaking the graph model lock-in" class="bib_div">
-    <span id="Lassila_SW_2023">[47]</span> Ora Lassila and Michael Schmidt and Olaf Hartig and Brad Bebee and Dave Bechberger and Willem Broekema and Ankesh Khandelwal and Kelvin Lawrence and Carlos Manuel Lopez Enriquez and Ronak Sharda and Bryan Thompson -
+    <span id="Lassila_SW_2023">[50]</span> Ora Lassila and Michael Schmidt and Olaf Hartig and Brad Bebee and Dave Bechberger and Willem Broekema and Ankesh Khandelwal and Kelvin Lawrence and Carlos Manuel Lopez Enriquez and Ronak Sharda and Bryan Thompson -
     <a href="https://doi.org/10.3233/SW-223273" target="_blank"><cite>The OneGraph vision: Challenges of breaking the graph model lock-in</cite></a>. - 2023.
 </div>
 <br />
 <div data-citation-title="AliMeKG: Domain Knowledge Graph Construction and Application in E-commerce" class="bib_div">
-    <span id="Li_CIKM_2020">[48]</span> Li, Feng-Lin and Chen, Hehong and Xu, Guohai and Qiu, Tian and Ji, Feng and Zhang, Ji and Chen, Haiqing -
+    <span id="Li_CIKM_2020">[51]</span> Li, Feng-Lin and Chen, Hehong and Xu, Guohai and Qiu, Tian and Ji, Feng and Zhang, Ji and Chen, Haiqing -
     <a href="https://doi.org/10.1145/3340531.3412685" target="_blank"><cite>AliMeKG: Domain Knowledge Graph Construction and Application in E-commerce</cite></a>. - 2020.
 </div>
 <br />
 <div data-citation-title="Interoperability for Mobility, Data Models, and API" class="bib_div">
-    <span id="MaaSAlliance_2021">[49]</span> MaaS Alliance -
+    <span id="MaaSAlliance_2021">[52]</span> MaaS Alliance -
     <a href="https://maas-alliance.eu/2021/11/25/interoperability-for-mobility-data-models-and-api/" target="_blank"><cite>Interoperability for Mobility, Data Models, and API</cite></a>. - 20.
 </div>
 <br />
@@ -708,6 +753,21 @@ function copyToClipboard(text) {
 <div data-citation-title="Application Programming Interfaces in government – Why, what and how" class="bib_div">
     <span id="JRC_2020">[24]</span> European Commission and Joint Research Centre and Vaccari, L and Posada, M and Boyd, M and Gattwinke, D and Mavridis, D and Smith, R and Santoro, M and Nativi, S and Medjaoui, M and Reusa, I and Switzer, S and Friis-Christensen, A -
     <a href="https://doi.org/10.2760/58129" target="_blank"><cite>Application Programming Interfaces in government – Why, what and how</cite></a>. - 2020.
+</div>
+<br />
+<div data-citation-title="Commission Staff Working Document Impact Assessment Report Accompanying the document Proposal for a Regulation of the European Parliament and the Council laying down measures for a high level of public sector interoperability across the Union (Interoperable Europe Act)" class="bib_div">
+    <span id="EUC_2022_721">[25]</span> European Commission -
+    <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri&#x3D;CELEX:52022SC0721" target="_blank"><cite>Commission Staff Working Document Impact Assessment Report Accompanying the document Proposal for a Regulation of the European Parliament and the Council laying down measures for a high level of public sector interoperability across the Union (Interoperable Europe Act)</cite></a>. - 2022.
+</div>
+<br />
+<div data-citation-title="Toward Mapping an NGSI-LD Context Model on RDF Graph Approaches: A Comparison Study" class="bib_div">
+    <span id="Abid_2022">[26]</span> Abid, Ahmed and Lee, Jieun and Le Gall, Franck and Song, JaeSeung -
+    <a href="https://doi.org/10.3390/s22134798" target="_blank"><cite>Toward Mapping an NGSI-LD Context Model on RDF Graph Approaches: A Comparison Study</cite></a>. - 2022.
+</div>
+<br />
+<div data-citation-title="Triple Pattern Fragments: A low-cost knowledge graph interface for the Web" class="bib_div">
+    <span id="Verborgh_2016">[27]</span> Ruben Verborgh and Miel {Vander Sande} and Olaf Hartig and Joachim {Van Herwegen} and Laurens {De Vocht} and Ben {De Meester} and Gerald Haesendonck and Pieter Colpaert -
+    <a href="https://doi.org/10.1016/j.websem.2016.03.003" target="_blank"><cite>Triple Pattern Fragments: A low-cost knowledge graph interface for the Web</cite></a>. - 2016.
 </div>
 <br />
 
