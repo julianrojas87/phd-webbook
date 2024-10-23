@@ -1,1 +1,21 @@
-# Research goals
+# 1.4 Research goals
+
+Following the arguments presented in the previous sections, the main research goal of this PhD dissertation is to **study and determine whether Linked Data technologies are suited (or not) to provide decentralised, interoperable and cost-efficient solutions for supporting use cases from the transport domain in real practical environments**. With this goal in mind we define the following research questions:
+
+**Research Question 1 (RQ1)**: *Can Linked Data technologies be used to support production-ready systems including lifecycle management operations such as creation, publishing, and querying of data for transport-related use cases?*
+
+RQ1 is mainly motivated by the increasingly frequent mention of Linked Data technologies in EU legislation frameworks as a recommended solution for interoperable data exchange. This calls for concrete evidence proving that this type of technologies are sufficiently evolved to build robust and production-ready systems. Production-ready includes the capacity to manage complex data life cycles that include (but are not limited to) creation, publishing and querying of, in this case, semantically described data. Moreover, according to EU regulations, these requirements should be supported over open-source software components to avoid vendor lock-ins. Therefore, the following hypothesis is defined to address RQ1:
+
+<div style="margin-left: 5%; margin-right: 5%"><strong>Hypothesis 1 (H1)</strong>: <i>The current open-source software ecosystem around Linked Data technologies can be used in practice to build robust and production-ready solutions to support interoperable data exchange that address real transport-related use cases</i></div>
+
+**Research Question 2 (RQ2)**: *Can Linked Data technologies be used to design interoperable APIs that are more scalable and cost-efficient, in terms of computational costs, compared to traditional and fully server-side API architectures used in real transport-related use cases?*
+
+The motivation for RQ2 stems from the ubiquitous claims over using APIs as a Technical interoperability solution. However, as is already acknowledged by authorities in the EU , it is necessary to provide incentives for organisations to invest effort and resources into adopting new technology stacks and migrating from legacy systems. Implementing new APIs comes at an organisational and technical cost. New APIs -based solutions require to be operationally low-cost, while following semantic interoperability principles, in order to achieve true interoperability. Therefore we formulate the following hypothesis to address RQ2:
+
+<div style="margin-left: 5%; margin-right: 5%"><strong>Hypothesis 2 (H2)</strong>: <i>Alternative API design based on the principles defined by the Linked Data Fragments conceptual framework allows the implementation of operationally low-cost and semantically interoperable APIs , compared to traditional solutions in the case of transport-related use cases.</i></div>
+
+**Research Question 3 (RQ3)**: *Can Linked Data technologies be used to support the development of decentralised Web applications that are usable in practice and are able support real use cases from the transport domain?*
+
+Lastly, RQ3 motivation comes from observing modern system architectural design for interoperability, such as the ones brought forth by the Data Space initiatives, which advocate for decentralised systems where data is made accessible close to its source and applications could be independently built to seamlessly access multiple data sources through interoperable interfaces (APIs). Also, the historically negative perception of Linked Data technologies attributed to a steep learning curve and lack of developer-friendly tools, calls for empirical evidence on the suitability of the current (open-source) software ecosystem for modern Web application development, to support and facilitate the integration and use of Linked Data technologies standards.
+
+<div style="margin-left: 5%; margin-right: 5%"><strong>Hypothesis 3 (H3)</strong>: <i>It is possible to build Web applications to support real use cases from the transport domain, following the principles and standards defined by Linked Data technologies, based on modern and developer-friendly frameworks and in reasonable time-frames.</i></div>
