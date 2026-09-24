@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,14 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="conclusion-and-future-work"><a class="header" href="#conclusion-and-future-work">Conclusion and future work</a></h1>
+                        <h1 id="326-conclusion-and-future-work"><a class="header" href="#326-conclusion-and-future-work">3.2.6 Conclusion and future work</a></h1>
+<p>Experiment 1 was designed to test H1, related to RQ1. In terms of CPU usage, the polling approach uses on average 10 times less resources than the pushing approach. RAM memory measurements are closer between the two approaches, with pushing using around 140MB more than polling. This can be explained by the operational characteristics of pushing and also by the setup of the experiment. In the pushing approach the server sends new data to all subscribed clients, when a new live update is received. This explains the various CPU peaks and the higher average usage. RAM memory consumption is also higher for pushing, because the server needs to keep an in-memory registry of all subscribed clients.</p>
+<p>The lower resource usage of polling can also be explained by the distribution of client requests. A new client was added every 0.5s from the start of the experiment and every client did a new request every 30s, giving a maximum request load was of 50 requests/second with 1500 clients. This load was easily handled by the server given its hardware capabilities. Further tests with synchronized clients and different live update frequencies can provide a more complete picture for polling. Nevertheless, the results provide an indication of the required resources when using one approach or the other, giving polling as a less demanding approach for CPU and RAM.</p>
+<p>Pushing requires lower bandwidth because clients do not send requests for new data updates. In conclusion, we reject H1 and consider polling as more <em>cost-efficient</em>, especially considering that with server-side caching in place, resource consumption could be improved.</p>
+<p>Results of Experiment 2 relate to RQ2 and H2, and show no significant difference in CPU or RAM for pulling or pushing on the client. This is explained by the usage of our rollback mechanism, and confirmed by the higher consumption of resources measured for the reference client. Therefore, we reject H2. However, pushing uses the least amount of bandwidth. This is of utmost importance if we consider that route planning applications may be executed on mobile devices using data connections subject to charges.</p>
+<p>The second part of Experiment 2 relates to RQ3 and H3. Results show significant improvements in route planning query recalculations using our rollback mechanism. By keeping snapshots of CSA’s internal state, full recalculations are avoided and faster times are achieved. Therefore we can <em>accept</em> H3. This is an important result from the perspective of end-users, which need to be informed of journey changes as soon as possible.</p>
+<p>In general, results show us that there is no <em>silver bullet</em> approach. Different aspects need to be considered to fulfill data provider, data consumer, and end-user requirements. Further evaluations may be performed to complement these results. However, this study already provides an informative base ground for public transport data publishers and route planning application developers. It also highlights the benefits of moving algorithm execution to the client-side, as is having more granular control of application internal state, which make possible to design smarter and more efficient clients.</p>
+<p>Future work could study the impact of client-side route planning integrating multiple modes of transportation, as well as explore alternative algorithms and evaluate their performance, including end-user testing.</p>
 
                     </main>
 

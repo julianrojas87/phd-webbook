@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,16 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="related-work"><a class="header" href="#related-work">Related Work</a></h1>
+                        <h1 id="212-related-work"><a class="header" href="#212-related-work">2.1.2 Related work</a></h1>
+<p>In this section we present an overview of related data models that up to different degrees, describe bicycle-related infrastructure. We also describe different approaches that are currently followed to publish bicycle-related information as Open Data.</p>
+<h2 id="2121-modelling-bicycle-infrastructure-data"><a class="header" href="#2121-modelling-bicycle-infrastructure-data">2.1.2.1 Modelling bicycle infrastructure data</a></h2>
+<p>Providing cyclists with useful information about related infrastructure such as parkings, requires models able to capture and describe all their relevant characteristics and features. Definitions of entities and properties related to cycling infrastructure can be found in general purpose vocabularies like <a href="https://schema.org">Schema.org</a>. For example <code>schema:ParkingFacility</code> or <code>schema:openingHours</code> represent two concepts directly related to the modeling bicycle parkings. However, Schema.org does not consider many domain-specific aspects, needed for giving detailed and useful information to cyclists. This occurs because Schema.org is meant to provide descriptions for a core of common topics, relying on extensions to cover more in-depth topic’s details [<span data-citation-key="Guha_CACM_2016"><a href="bibliography.html#Guha_CACM_2016">64</a></span>].</p>
+<p>The creators of <a href="http://schema.mobivoc.org/">MobiVoc</a> followed the same rationale. MobiVoc defines a vocabulary for mobility-related concepts that extends Schema.org classes by establishing <em>subclass</em> relations with Schema.org classes. Such relations are established by means of the <code>rdfs:subClassOf</code> predicate. Even though MobiVoc specializes on mobility and further defines domain related concepts, it still lacks coverage for cyclic infrastructure specific entities. For example, it does not give definitions for parking security features, which often are important criteria for cyclist looking for parking places.</p>
+<p>Other related work includes the <a href="http://ontology.eil.utoronto.ca/icity/Parking/">Parking Ontology</a>, the <a href="https://github.com/NABSA/gbfs">General Bikeshare Feed Specification (GBFS)</a> and the <a href="https://github.com/openmobilityfoundation/mobility-data-specification">Mobility Data Specification (MDS)</a>. The Parking Ontology focuses on describing car parking areas and does not consider bicycle-related domain knowledge. GBFS defines a JSON-based specification for real-time and read-only data about status of bike sharing stations. MDS defines a set of APIs to facilitate information exchange between public authorities and dockless mobility service providers (e.g, e-scooters, mopeds, bicycles). Both GBFS and MDS are mostly focused on describing operational aspects of mobility services and lack formal semantics on their data models.</p>
+<h2 id="2122-bicycle-infrastructure-as-open-data"><a class="header" href="#2122-bicycle-infrastructure-as-open-data">2.1.2.2 Bicycle Infrastructure as Open Data</a></h2>
+<p>Open and machine-readable data is fundamental for the creation of applications that provide useful and reliable information to cyclists. Infrastructure managers commonly publish their data in the form of data dumps or via HTTP APIs. For instance, the data portal of the city of Ghent, Belgium publishes their <a href="https://data.stad.gent/explore/dataset/real-time-bezettingen-fietsenstallingen-gent/information/">bicycle parking data</a> using both approaches.</p>
+<p>OpenStreetMap (OSM) can also be considered as an open data source for bicycle infrastructure information [<span data-citation-key="Fester_IJST_2020"><a href="bibliography.html#Fester_IJST_2020">65</a></span>]. It also provides data dumps and can be queried via the <a href="https://wiki.openstreetmap.org/wiki/Overpass_API">Overpass API</a>. Given their high server cost, open HTTP APIs often impose request limits (as is the case for Ghent and Overpass endpoints) or expect to handle simple queries only [<span data-citation-key="Olbricht_OSM_2015"><a href="bibliography.html#Olbricht_OSM_2015">66</a></span>]. Data dumps on the other hand, can be seen as a mirror of the original data source and are outdated since the moment of their creation, which becomes an issue, specially when publishing live data [<span data-citation-key="Rojas_WWW_2018"><a href="bibliography.html#Rojas_WWW_2018">67</a></span>].</p>
+<p>Another popular alternative, motivated by SEO (Search Engine Optimization) guidelines is the embedding of structured data into HTML using Schema.org as a data model, and JSON-LD or RDFa as serialization formats. This helps search engines to better classify and index websites, but it is hard to reuse by applications due to discoverability and even legal issues when scraping websites.</p>
 
                     </main>
 

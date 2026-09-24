@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,32 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="preliminary-evaluation"><a class="header" href="#preliminary-evaluation">Preliminary evaluation</a></h1>
+                        <h1 id="226-preliminary-evaluation"><a class="header" href="#226-preliminary-evaluation">2.2.6 Preliminary evaluation</a></h1>
+<p>Publishing live data on the Web can be done either through Publish/Subscribe (pubsub) or Polling interfaces. Each of these publication strategies present different trade-offs regarding cost-efficiency of the server interface, response time latency, CPU usage and bandwidth consumption. Depending on the use case, there may be different constraints that could be fulfilled by either one of the publication strategies. Therefore, in order to have a clearer picture of how these strategies behave in different scenarios, we designed a preliminary experiment to measure server CPU usage and client-perceived latency for a Websockets-based pubsub interface and an HTTP-based polling interface, both implemented in our Live Time Series Server and exposing the same live data updates. The live data stream used for the benchmarks consists of parking site availability observations as the ones used by our previously described proof of concept. The data is provided in RDF and serialised using the Trig format. Each observation is part of a named graph, annotated using the <code>prov:generatedAtTime</code><sup class="footnote-reference" id="fr-fn81-1"><a href="#footnote-fn81">1</a></sup> predicate to specify the moment the observation was made.</p>
+<h2 id="2261-experiment-design"><a class="header" href="#2261-experiment-design">2.2.6.1 Experiment design</a></h2>
+<p>For the experiment we developed a set of configurable tools that comprise a complete scenario for publication and consumption of live data updates on the Web. The experiment setup is made available as a <a href="https://github.com/julianrojas87/live-timeseries-evaluation">Github repository</a> for reproducibility. Next we describe each of these tools:</p>
+<ul>
+<li><strong>LPDGenerator:</strong> The Linked Parking Data Generator tool creates a dataset of parking availability observations. It is possible to configure the number of parking locations, the interval of time and the behaviour of the availability by defining, what we call events, which help to mimic peak hours throughout the day.</li>
+<li><strong>Replay-Timeseries:</strong> This tool takes a dataset of observations and starts to emit each of them at a predefined rate on the standard output. It is possible to configure the period on which the observations will be emitted, allowing to simulate faster or slower data streams.</li>
+<li><strong>Live Time Series Server:</strong> This refers to our proof-of-concept implementation described in <a href="ch_2.2.5_ltss.html">section 2.2.5</a>, which is implemented as a Node.js server, based on the Koa framework. The server receives updates through the standard input and exposes them through a HTTP interface where a client can request the latest updates. It also pushes the updates through a Websockets interface to every previously subscribed client. The server stores every update on a file-based paged collection, enabling access to historic data through a HTTP interface. It also provides metadata using the DCAT specification, containing a description of the available streams, their access method (Websockets or HTTP) and their access URL.</li>
+<li><strong>Nginx:</strong> A Nginx instance is configured on top of the Live Time Series Server and used as a reverse proxy and HTTP cache manager.</li>
+<li><strong>Time Series-Client:</strong> A Node.js application that can consume RDF streams either through HTTP polling or through a Websockets communication. It requests a DCAT descriptor and proceeds to consume the described streams through their corresponding protocol. For HTTP polling the client uses the Max-Age value from the Cache-Control header to determine automatically when to request the next update. For a Websocket subscription it just awaits the next update from the server. In both scenarios the client measures the perceived latency of the data using the <code>prov:generatedAtTime</code> value and the moment of reception.</li>
+</ul>
+<p>The setup of the experiment is done using Docker containers and the docker-compose application to link all the containers together. In this paper we present preliminary results that were obtained using an Intel Core i5-7440HQ @ 2.8GHz x4 and 16Gb of RAM machine for the server, and an Intel Core i7 @ 3.6Ghz and 12GB of RAM machine for the clients.</p>
+<h2 id="2262-inconclusive-results"><a class="header" href="#2262-inconclusive-results">2.2.6.2 Inconclusive results</a></h2>
+<p>The results on the latency, illustrated in <a href="ch_2.2.6_evaluation.html#figure2.8">figure 2.8</a>, show no clear trend until 200 clients and are therefore inconclusive. During the test period, we also measured the CPU-time of the server. The maximum spikes are visualised in <a href="ch_2.2.6_evaluation.html#figure2.9">figure 2.9</a>. Overall, the CPU consumption for both polling and pubsub remained low otherwise (&lt;3%). The only conclusion we can make from this experiment, is that up to 200 clients, we cannot determine a clear advantage for either approach. For a higher number of user agents, we will however, need to amend our tests to work in a more distributed setting.</p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="img/figure_2.8.png" alt="Figure 2.8"><span class="img-wrapper"><img src="img/figure_2.8.png" alt="Figure 2.8"></span></label></p>
+<div id="figure2.8" style="text-align: center"><strong>Figure 2.8.</strong> The Websockets (orange, left) approach, until 200 clients, shows no sign of slower latency or scalability issues, compared to the polling approach (blue, right).</div>
+
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="img/figure_2.9.png" alt="Figure 2.9"><span class="img-wrapper"><img src="img/figure_2.9.png" alt="Figure 2.9"></span></label></p>
+<div id="figure2.9" style="text-align: center"><strong>Figure 2.9.</strong> The maximum CPU% measured by dockerstats per process. For both HTTP polling and Websockets, there is no influence to be seen.</div>
+
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-fn81">
+<p><code>@prefix prov: &lt;http://www.w3.org/ns/prov#&gt;.</code> <a href="#fr-fn81-1">↩</a></p>
+</li>
+</ol>
 
                     </main>
 
@@ -187,7 +214,7 @@
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="ch_2.2.6.1_design.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch_2.2.7_conclusion.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -201,7 +228,7 @@
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="ch_2.2.6.1_design.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch_2.2.7_conclusion.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

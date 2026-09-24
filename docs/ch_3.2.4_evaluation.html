@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,17 +179,61 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="evaluation"><a class="header" href="#evaluation">Evaluation</a></h1>
+                        <h1 id="324-evaluation"><a class="header" href="#324-evaluation">3.2.4 Evaluation</a></h1>
+<p>We study different approaches to efficiently publish and consume live public transport data, in terms of computational resources (CPU, RAM and bandwidth) and route planning query processing performance. For this we define the following research questions:</p>
+<ul>
+<li><strong>RQ1.</strong> What is the most <em>cost-efficient</em> approach, in terms of computational resources, to publish live public transport data, considering polling and push-based technologies in a LC-based architecture?</li>
+<li><strong>RQ2.</strong> What is the impact of polling and push-based approaches on LC-based clients, in terms of computational resources and route planning query processing?</li>
+<li><strong>RQ3.</strong> What is the impact of the CSA rollback mechanism on the performance of a LC-based client for route planning query processing in terms of execution time?</li>
+</ul>
+<p>To address these research questions, we defined a hypothesis for each of them:</p>
+<ul>
+<li><strong>H1.</strong> A pushing approach will lower resource consumption on average, due to avoiding processing new client requests to obtain new schedule updates.</li>
+<li><strong>H2.</strong> A pushing approach has lower computational cost on clients, since is not necessary to send every time a new request to the server to get the latest updates, thus reducing bandwidth and communication establishment processes.</li>
+<li><strong>H3.</strong> On average, a rollback mechanism results in lower processing times for processing route planning queries.</li>
+</ul>
+<p>We designed two different experiments to test our hypotheses. Next, we describe the testing data and the setups for each of the experiments.</p>
+<h2 id="3241-real-world-test-data"><a class="header" href="#3241-real-world-test-data">3.2.4.1 Real-world test data</a></h2>
+<p>We used real data from the <a href="https://www.belgiantrain.be/">Belgian railway operator NMBS</a>. NMBS publishes both <a href="https://www.belgiantrain.be/en/3rd-party-services/mobility-service-providers/public-data">GTFS and GTFS-Realtime data dumps as open data</a>. We collected the timetable and all emitted live updates for November 2019 (we make the <a href="https://github.com/julianrojas87/ICWE2020-results">data available online</a>). We analyzed these data to understand how live updates happen, i.e., what the low and peak hours normally are, to run our experiments considering representative data. <a href="ch_3.2.4_evaluation.html#figure3.13">Figure 3.13</a>(a) shows the amount of <em>Connections</em> updated during the entire month, having the 28th of November as the day with the highest amount (over 13.63 million). <a href="ch_3.2.4_evaluation.html#figure3.13">Figure 3.13</a>(b) zooms in into this day, clearly showing peak hours around 07:00 and 17:00, and registering 17:00 as the peak hour of the day with more than 900,000 updated <em>Connections</em>.</p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="img/figure_3.13.png" alt="Figure 3.13"><span class="img-wrapper"><img src="img/figure_3.13.png" alt="Figure 3.13"></span></label></p>
+<div id="figure3.13" style="text-align: center"><strong>Figure 3.13.</strong> The amount and distribution of <em>Connection</em> updates allow to visualize the behavior of the transport network regarding its low and peak times. Week days and especially their mornings and afternoons, consistently show higher number of updates.</div>
+
+<p>We used the <a href="https://gtfs.irail.be/logs/">iRail query log dataset</a> as a reference. This dataset contains a registry of over one million real route planning queries per day, received by the <a href="https://api.irail.be/">iRail API</a>. We analyzed the queries that were executed on the week days during November 2019 and classified them by the amount of <em>Connections</em> used by their <em>Earliest Arrival Time</em> route, since routes with higher amount of <em>Connections</em> require a higher processing effort to be computed.</p>
+<h2 id="3242-experiment-1-pushing-live-transport-updates"><a class="header" href="#3242-experiment-1-pushing-live-transport-updates">3.2.4.2 Experiment 1: Pushing live transport updates</a></h2>
+<p>The first experiment was designed to test the computational resource (CPU, RAM and bandwidth) consumption of LC-based live public transport data publishing, following polling (HTTP API) and push-based (SSE) approaches. We setup a server with a Quad core Intel E5520 (2.2GHz) CPU and 12 GB of RAM. We progressively instantiate up to 1500 clients requesting/receiving live data updates. Each client starts its operation 0.5 seconds after the previous to avoid overload peaks on the measurements and simulate a more realistic environment, where clients issue requests at any point in time and not necessarily synchronized with the live updates frequency.</p>
+<p>For the polling scenario every client requests a new data update every 30 seconds, which corresponds to the update frequency of NMBS GTFS-Realtime feed. We also disabled serve-side caching, to obtain a clearer image of the actual operational costs of the server. In the pushing scenario, the clients subscribe once to the SSE interface and the server pushes new data to them every 30 seconds. The experiment was executed during 20 minutes for each scenario.</p>
+<h2 id="3243-experiment-2-consuming-live-transport-updates"><a class="header" href="#3243-experiment-2-consuming-live-transport-updates">3.2.4.3 Experiment 2: Consuming live transport updates</a></h2>
+<p>The second experiment was designed to measure the CPU, RAM and bandwidth usage of a LC-based client, consuming live public transport updates following polling (HTTP API) and push-based (SSE) approaches. The client application was deployed on a machine with a Quad core Intel E5520 (2.2GHz) CPU and 12GB of RAM. We handpicked routes with different amount of updated <em>Connections</em>. This was intended to avoid evaluating routes without updates and thus, with no significant impact on client resources.</p>
+<p>We ran the experiment for each selected query using our client on a polling and a pushing scenario, and a reference test client without the rollback mechanism described in <a href="ch_3.2.3_ref-architecture.html#3233-dynamic-rollbacks-for-csa">section 3.2.3.3</a>. The evaluation run for 15 minutes on each scenario, where clients requested/received live updates every 30 seconds. <a href="ch_3.2.4_evaluation.html#table3.5">Table 3.5</a> shows an overview of the selected routes.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: center">From</th><th style="text-align: center">To</th><th style="text-align: center"><em>Connections</em></th><th style="text-align: center">Travel time (min)</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: center">Hasselt</td><td style="text-align: center">Sint-Truiden</td><td style="text-align: center">2</td><td style="text-align: center">15</td></tr>
+<tr><td style="text-align: center">Leuven</td><td style="text-align: center">Diest</td><td style="text-align: center">2</td><td style="text-align: center">32</td></tr>
+<tr><td style="text-align: center">Landen</td><td style="text-align: center">Diest</td><td style="text-align: center">5</td><td style="text-align: center">43</td></tr>
+<tr><td style="text-align: center">Eppegem</td><td style="text-align: center">Brussels-Shuman</td><td style="text-align: center">6</td><td style="text-align: center">23</td></tr>
+<tr><td style="text-align: center">Mechelen</td><td style="text-align: center">Brussels-Congress</td><td style="text-align: center">6</td><td style="text-align: center">30</td></tr>
+<tr><td style="text-align: center">Leuven</td><td style="text-align: center">Schaarbeek</td><td style="text-align: center">11</td><td style="text-align: center">29</td></tr>
+<tr><td style="text-align: center">Asse</td><td style="text-align: center">Antwerp-Berchem</td><td style="text-align: center">18</td><td style="text-align: center">87</td></tr>
+<tr><td style="text-align: center">Antwerp-Central</td><td style="text-align: center">Alken</td><td style="text-align: center">23</td><td style="text-align: center">94</td></tr>
+</tbody>
+</table>
+</div>
+<div id="table3.5" style="text-align: center"><strong>Table 3.5.</strong> Set of route planning queries extracted from the iRail API logs. This table shows the number of <em>Connections</em> and the total travel time of the <em>Earliest Arrival Time</em> route.</div>
+
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="ch_3.2.3.3_dynamic-rollbacks.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ch_3.2.3_ref-architecture.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="ch_3.2.4.1_test-data.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch_3.2.5_results.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -197,11 +243,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="ch_3.2.3.3_dynamic-rollbacks.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="ch_3.2.3_ref-architecture.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="ch_3.2.4.1_test-data.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch_3.2.5_results.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,25 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="leveraging-semantic-technologies-for-digital-interoperability-in-the-european-railway-domain"><a class="header" href="#leveraging-semantic-technologies-for-digital-interoperability-in-the-european-railway-domain">Leveraging semantic technologies for digital interoperability in the European railway domain</a></h1>
+                        <h1 id="4-leveraging-semantic-technologies-for-digital-interoperability-in-the-european-railway-domain"><a class="header" href="#4-leveraging-semantic-technologies-for-digital-interoperability-in-the-european-railway-domain">4. Leveraging semantic technologies for digital interoperability in the European railway domain</a></h1>
+<p><em>“There is a light at the end of the tunnel… hopefully it’s not a freight train!”</em></p>
+<div style="text-align: right">— Mariah Carey, singer, songwriter</div>
+
+<p>The need for interoperability is recognized by the EU commission as one of the most important issues that need to be addressed to unlock the potential and value that arise when combining multiple and cross-domain data sources for academic, economic and social development. Interoperability is still an open challenge in practice across but also within organisations. The existence of multiple dependencies and teams with different needs and uses for data inside an organisation, tends to create smaller scale data ecosystems that also suffer from the lack of technically and semantically interoperable systems.</p>
+<p>Precisely this challenge motivated the European Agency for Railways (ERA) to explore and study the adoption of Linked Data technologies as an interoperability solution. The exploration consisted of targeting a focused and highly demanded use from their stakeholders in the railway domain, namely the Route Compatibility Check (RCC). A RCC consists of assessing if a given railway vehicle, based on its physical characteristics, is technically compatible with a certain route over the railway network. The RCC may also involve finding 1 or more possible routes across a sequence of stations and then assessing the compatibility with a given vehicle. Supporting this use case entailed the integration of at least 2 of the 12 base registers managed by the agency, plus some other external datasets, which set the goal for building a solution based on Linked Data technologies.</p>
+<p>This chapter describes the reference architecture that was initially built in a pilot project and later evolved into a fully-fledged production system, to extract, transform and publish an RDF knowledge graph containing (at the time of writing) over 35 million triples based on a proposed vocabulary called the ERA Vocabulary, which also includes 65 SKOS controlled vocabularies. The implemented solution is composed solely of open source software components and makes use of state of the art Linked Data technologies (e.g,. RML and SPARQL). Additionally, it shows how to use an LDF-based API to support shortest path graph queries, which are not fully supported by standard SPARQL. The work in this chapter is fully dedicated to study RQ1 and RQ3.</p>
+<div style="text-align: center">★★★</div>
+
+<p><strong>J.A. Rojas, M. Aguado, P. Vasilopoulou, I. Velitchkov, D. Van Assche, P. Colpaert and R. Verborgh</strong></p>
+<p>Published in the proceedings of the International Semantic Web Conference (ISWC). 2021.<sup class="footnote-reference" id="fr-fn147-1"><a href="#footnote-fn147">1</a></sup></p>
+<p><strong>Abstract</strong></p>
+<p>The European Union Agency for Railways is an European authority, tasked with the provision of a legal and technical framework to support harmonised and safe cross-border railway operations throughout the EU. So far, the agency relied on traditional application-centric approaches to support the data exchange among multiple actors interacting within the railway domain. This led however, to isolated digital environments that consequently added barriers to digital interoperability while increasing the cost of maintenance and innovation. In this work, we show how Semantic Web technologies are leveraged to create a semantic layer for data integration across the base registries maintained by the agency. We validate the usefulness of this approach by supporting route compatibility checks, a highly demanded use case in this domain, which was not available over the agency’s registries before. Our contributions include (i) an official ontology for the railway infrastructure and authorised vehicle types, including 28 reference datasets; (ii) a reusable Knowledge Graph describing the European railway infrastructure; (iii) a cost-efficient system architecture that enables high-flexibility for use case development; and (iv) an open source and RDF native Web application to support route compatibility checks. This work demonstrates how data-centric system design, powered by Semantic Web technologies and Linked Data principles, provides a framework to achieve data interoperability and unlock new and innovative use cases and applications. Based on the results obtained during this work, ERA officially decided to make Semantic Web and Linked Data-based approaches, the default setting for any future development of the data, registers and specifications under the agency’s remit for data exchange mandated by the EU legal framework. The next steps, which are already underway, include further developing and bringing these solutions to a production-ready state.</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-fn147">
+<p>Links of some resources have been updated with respect to the original version of this paper. <a href="#fr-fn147-1">↩</a></p>
+</li>
+</ol>
 
                     </main>
 

@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,10 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="review-of-rq2-and-h2"><a class="header" href="#review-of-rq2-and-h2">Review of RQ2 and H2</a></h1>
+                        <h1 id="52-review-of-rq2-and-h2"><a class="header" href="#52-review-of-rq2-and-h2">5.2 Review of RQ2 and H2</a></h1>
+<p>Despite counting with designs and implementations present in all the works presented in this PhD dissertation, LDF-based APIs were only thoroughly evaluated in <a href="ch_3_introduction.html">Chapter 3</a> and partially in <a href="ch_2-introduction.html">Chapter 2</a>.</p>
+<p><a href="ch_2-introduction.html">Chapter 2</a> presents an initial scalability evaluation of polling HTTP interfaces compared to push-based Websocket interfaces. The results showed a lower latency for Websocket interfaces but at the cost of higher CPU use. In <a href="ch_3_introduction.html">Chapter 3</a> a similar evaluation was performed to compare polling-based interfaces (HTTP) against push-based (Server-Sent Events) for handling live public transport updates. This evaluation included a higher number of concurrent clients and confirmed that a polling strategy is more cost-efficient. <a href="ch_3_introduction.html">Chapter 3</a> also presented a thorough evaluation of a Linked Connections (LC) API, which is in turn a time-fragmented LDF API designed for facilitating the execution of client side route planning algorithms such as the CSA (Connection Scan Algorithm). Results showed how the LC API is indeed less computationally costly and scales better than traditional APIs for public transport route planning, however the trade-off imposed by the LDF-based API design, tolls high on the query performance at client-side for larger transport networks, which nullifies the benefits of cost-efficiency on the server-side for practical scenarios that involve large datasets.</p>
+<p>Based on this evidence I move onto rejecting H2. However, interesting results were obtained that showed that under certain conditions (e.g, for smaller transport networks), an LDF-based API could perform as good as and even outperform a traditional server-side route planning API when the number of concurrent clients grows. This represents a promising opportunity, given that such conditions can be pursued when dealing with larger datasets. For example, by further fragmenting the data in ways where the resulting subsets can be treated individually and simultaneously as smaller datasets, where we can reach the higher performance and cost-efficiency observed in this work.</p>
 
                     </main>
 

@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,13 +179,19 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="conclusion-and-future-work"><a class="header" href="#conclusion-and-future-work">Conclusion and future work</a></h1>
+                        <h1 id="227-conclusion-and-future-work"><a class="header" href="#227-conclusion-and-future-work">2.2.7 Conclusion and future work</a></h1>
+<p>In this paper, we identified key requirements for publishing live open data. These are currently the minimum requirements for the cities in Flanders. The Web – and the HTTP protocol more specifically – already contains the needed technological building blocks to publish live open data. However, there is no specification for live open data currently available, telling all stakeholders within the Web ecosystem what building blocks to use. To that extent, in the region of Flanders, we are proposing seven minimal requirements to be added to an Open Data charter: (1) fragment your datasets and publish the documents over HTTP; (2) add caching headers to each document; (3) add hypermedia description using the Hydra vocabulary; (4) A Web address (URI) per thing (i.e. every observation or sensor); (5) add a link to a machine readable open license in the document; (6) Add a Cross Origin Resource Sharing header enabling access from pages hosted on different origins; (7) in order to allow data portals to make your datasets discoverable, publish DCAT-AP metadata. When these technical principles are implemented, clients can benefit from these simple Web building blocks and start reusing this data automatically.</p>
+<p>In “On a Web of Data Streams” [<span data-citation-key="Dellaglio_DeSemWeb_2017"><a href="bibliography.html#Dellaglio_DeSemWeb_2017">84</a></span>], the authors put forward in their first requirement, that the data should keep moving and should use a non-polling approach. Due to the nature of open data, and the fact the data becomes non-cacheable in a push-based approach, we question whether this requirement holds true. After all, it is up to the data publisher to make a trade-off: how important is not working with stale data vs. what budget is there for hosting the data? We performed a first test, from which we conclude that we will need a more advanced experiment: up to 200 clients, there is no trend to be seen, and we cannot draw any conclusions. Due to the constraints of HTTP, caching is not possible for sub-second streams, neither is optimising polling time, as also the Age header should be in seconds. In future work we will conduct more experiments on how fast data should update in order for HTTP polling to become suboptimal, regardless of the specification.</p>
+<p>In the use case of parking site availability for the centre cities in Flanders, we conclude that the live data using HTTP documents instead of a pull protocol is a good choice: implementation is kept simple and the data is easily described with standard Linked Data and http technologies.</p>
+<p>Multidimensional Interfaces [<span data-citation-key="Taelman_IWCL_2016"><a href="bibliography.html#Taelman_IWCL_2016">29</a></span>] were introduced for fragmenting data with an order generically, and publishing these fragments in an interface-level index. These interfaces can make multidimensional ordinal data such as timeseries or geospatial data automatically discoverable and consumable by clients using hypermedia controls. In future work, we will use this interface to provide statistical summaries over longer periods of time, and thus allow agents to speed up certain analytical queries over the historic observations. Furthermore, metadata can this way make time series automatically discoverable, whether push or poll based.</p>
+<h2 id="acknowledgements"><a class="header" href="#acknowledgements">Acknowledgements</a></h2>
+<p>This work was funded by the Smart Flanders program. Thank you to communication scientists Nils Walravens and Mathias Van Compernolle for the endless inspirational collaboration on how to make Open Data work organizationally.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="ch_2.2.6.2_results.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ch_2.2.6_evaluation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -197,7 +205,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="ch_2.2.6.2_results.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="ch_2.2.6_evaluation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 

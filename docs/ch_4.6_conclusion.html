@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,13 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="conclusion-and-future-work"><a class="header" href="#conclusion-and-future-work">Conclusion and future work</a></h1>
+                        <h1 id="46-conclusion-and-future-work"><a class="header" href="#46-conclusion-and-future-work">4.6 Conclusion and future work</a></h1>
+<p>The most important achievement of this work, is the strong impact it had on the <a href="https://www.era.europa.eu/content/decision-n%C2%B0250-management-board-european-union-agency-railways-adopting-roadmap-data-and_en">decision taken by ERA</a> to make Semantic Web technologies the default setting for any future development of data, registers and specifications, under the agency’s remit. Considering ERA’s position as an European authority this decision could potentially influence the different stakeholders in the railway domain, to take similar paths.</p>
+<p>The results obtained from this work, demonstrated with a practical approach, how Semantic Web technologies enable higher data interoperability. Data integration is achieved at the <em>data level</em> (data-centric) instead of being locked into application-specific business logic (application-centric), opening the door for new and innovative use cases. We were able to create a semantic interoperability layer over the different considered data sources, which requires significantly less effort to be created and managed, compared to developing ad-hoc applications and 1-to-1 interfaces between different information systems. Furthermore, this work also demonstrated that Semantic Web technologies can be used to create functional Web applications based on modern and developer-friendly frameworks such as React with little additional effort from a development perspective and in a reasonable time frame.</p>
+<p>The choice of architecture design made for this prototype leverages HTTP caching mechanisms to achieve higher scalability while providing full querying flexibility to client applications. This is demonstrated by the ability of the RCC client application to perform route planning calculations over the ERA KG, which are not supported by standard RDF triple stores. Yet, this approach establishes a trade-off between scalability and flexibility vs. performance. Further optimizations are required to achieve production-level performance without losing the benefits of the proposed solution architecture.</p>
+<p>In the future, we aim to explore how more granular descriptions of the railway topology can be integrated, to increase the reliability of the ERA KG. From an architectural perspective, stream-processing and KG virtualization approaches may be studied to support cases with higher requirements on up-to-date data.</p>
+<h2 id="acknowledgements"><a class="header" href="#acknowledgements">Acknowledgements</a></h2>
+<p>The authors would like to extend their gratitude to <a href="https://www.prorail.nl/">ProRail</a>, <a href="https://www.sncf.com/en">SNCF</a>, <a href="https://www.banenor.no/">BANE NOR</a>, <a href="https://eimrail.org/">EIM</a>, <a href="https://uiprail.org/">UIP</a>, <a href="http://www.cedex.es/CEDEX/lang_castellano/">CEDEX</a>, <a href="https://www.railml.org/en/">RailML</a>, <a href="https://www.eulynx.eu/">EULYNX</a>, the <a href="https://op.europa.eu/en/home">Publications Office of the EU</a> and the <a href="https://ec.europa.eu/isa2/actions/improving-cross-border-exchange-location-information_en">ELISE</a> action team for providing us with their invaluable data, expertise and feedback to make this work possible.</p>
 
                     </main>
 

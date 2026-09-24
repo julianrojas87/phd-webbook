@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,14 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="the-velopark-linked-open-data-platform-and-live-data-publishing-in-flanders"><a class="header" href="#the-velopark-linked-open-data-platform-and-live-data-publishing-in-flanders">The Velopark Linked Open Data platform and Live Data publishing in Flanders</a></h1>
+                        <h1 id="2-the-velopark-linked-open-data-platform-and-live-data-publishing-in-flanders"><a class="header" href="#2-the-velopark-linked-open-data-platform-and-live-data-publishing-in-flanders">2. The Velopark Linked Open Data platform and Live Data publishing in Flanders</a></h1>
+<p><em>“A bicycle ride around the world begins with a single pedal stroke”</em></p>
+<div style="text-align: right">— Scott Stoll, author, artist, adventurer</div>
+
+<p>The European mandate of making (public) data open by design and by default, motivated the Velopark project to create a semantic data model and a set of tools that would allow and facilitate bicycle infrastructure managers, both from the public and private sector, to publish their data in an interoperable fashion. Data about bicycle parking facilities include physical properties (e.g., geospatial location, area, sections, etc), administrative information (e.g., contact details, opening hours, operation rules, etc) and in some cases live data about parking spaces availability.</p>
+<p>The publications presented next, provide a detailed overview of the proposed Open Velopark Vocabulary, which is an OWL ontology that follows Linked Data best practices to reuse well-known vocabularies, namely <a href="https://schema.org">schema.org</a> and <a href="https://www.mobivoc.org/">Mobivoc</a>. This ontology was built in a collaborative process that involved civic authorities and private sector companies. It also guided the development of Web applications targeted for both regular users and bicycle parking managers (BPMs) to access and manage data assets. Such applications were built according to an architectural design that allowed for both centralised and decentralised data publishing. Thanks to this architecture, BPMs have the possibility to store and publish their data in a central Velopark repository, where each parking facility would get a Velopark IRI; or in their own premises and using their own IRIs. Regardless of the chosen option, all parking facilities managed through the Velopark applications are registered in a DCAT-based data catalog, with their proper IRIs. This allows the user oriented application and potentially other applications as well, to discover and visualise parking facilities stored in remote servers. The work done in Velopark, directly contributes to RQ1 and RQ3 where I aim to study the suitability of Linked Data technologies to implement robust system architectures for data management and decentralised modern Web applications.</p>
+<p>The last section of this chapter brings together 2 publications dedicated to study an LDF-based API design to publish time series data as Linked Data, namely live parking spaces availability. The first publication elaborates on the rationale of the API design, which is based on a timestamp-based data fragmentation. Data fragments are complemented by semantically annotated hypermedia relations to other fragments in the collection of data measurements. A preliminary evaluation over synthetic data is presented, which aimed to study the scalability of such LDF-based API design compared to a publish/subscribe data interface based on Websockets. The second paper mentioned in this section, is a short paper that describes the architectural design of the Web server implemented to support this type of APIs over time series data. Exactly the same server was used in the evaluation of the first paper, which is why I decided to merge these two publications in 1 subsection. The implementations built in these works are currently being used in the existing online Velopark platform and support a few cases where <a href="https://www.velopark.be/static/data/Parko_1">real live parking spaces availability data is available</a>. The preliminary study, although limited, contributes to the discussion around RQ2.</p>
+<p>Lastly, it is important to highlight that Velopark platform continues to be online since its launch at the end of 2019 and currently supports 71 Belgian municipalities and 11 private BPMs to publish a total of 3017 bicycle parkings.</p>
 
                     </main>
 

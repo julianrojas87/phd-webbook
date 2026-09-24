@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,13 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="efficient-live-public-transport-data-sharing-for-route-planning-on-the-web"><a class="header" href="#efficient-live-public-transport-data-sharing-for-route-planning-on-the-web">Efficient live public transport data sharing for route planning on the Web</a></h1>
+                        <h1 id="32-efficient-live-public-transport-data-sharing-for-route-planning-on-the-web"><a class="header" href="#32-efficient-live-public-transport-data-sharing-for-route-planning-on-the-web">3.2 Efficient Live Public Transport Data Sharing for Route Planning on the Web</a></h1>
+<div style="text-align: center">★★★</div>
+
+<p><strong>J.A. Rojas, D. Van Assche, H. Delva, P. Colpaert and R. Verborgh</strong></p>
+<p>Published in the proceedings of the International Web Engineering Conference (ICWE), 2020.</p>
+<p><strong>Abstract</strong></p>
+<p>Web-based information services transformed how we interact with public transport. Discovering alternatives to reach destinations and obtaining live updates about them is necessary to optimise journeys and improve the quality of travellers’ experience. However, keeping travellers updated with opportune information is demanding. Traditional Web APIs for live public transport data follow a polling approach and allocate all data processing on either data providers, lowering data accessibility, or data consumers, increasing the costs of innovative solutions. Moreover, data processing load increases further because previously obtained route plans are fully recalculated when live updates occur. In between solutions sharing processing load between clients and servers, and alternative Web API architectures were not thoroughly investigated yet. We study performance trade-offs of polling and push-based Web architectures to efficiently publish and consume live public transport data. We implement (i) alternative architectures that allow sharing data processing load between clients and servers, and evaluate their performance following polling- and push-based approaches; (ii) a rollback mechanism that extends the Connection Scan Algorithm to avoid unnecessary full route plan recalculations upon live updates. Evaluations show polling as a more efficient alternative on CPU and RAM but hint towards push-based alternatives when bandwidth is a concern. Clients update route plan results 8–10 times faster with our rollback approach. Smarter API design combining polling and push-based Web interfaces for live public transport data reduces the intrinsic costs of data sharing by equitably distributing the processing load between clients and servers. Future work can investigate more complex multimodal transport scenarios.</p>
 
                     </main>
 

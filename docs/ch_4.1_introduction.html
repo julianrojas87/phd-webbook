@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,38 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+                        <h1 id="41-introduction"><a class="header" href="#41-introduction">4.1 Introduction</a></h1>
+<p>The establishment of an interoperable European railway area without frontiers, while guaranteeing railway operation safety, is the prime objective of the European Union Agency for Railways (ERA) [<span data-citation-key="EU_2016_796"><a href="bibliography.html#EU_2016_796">151</a></span>]. Since 2019 ERA became the European authority<sup class="footnote-reference" id="fr-fn148-1"><a href="#footnote-fn148">1</a></sup> for cross-border rail traffic in Europe, mandated under the European Union (EU) law, to devise the technical and legal framework for supporting harmonised and safe cross-border railway operations.</p>
+<p>The European railway ecosystem presents a particularly challenging scenario for interoperability, not only regarding physical aspects (e.g., infrastructure, energy systems, etc.) but also digital ones (e.g., information). Multiple organisations, such as Infrastructure Managers (IMs)<sup class="footnote-reference" id="fr-fn149-1"><a href="#footnote-fn149">2</a></sup> and Railway Undertakings (RUs)<sup class="footnote-reference" id="fr-fn150-1"><a href="#footnote-fn150">3</a></sup> [<span data-citation-key="EU_2012_34"><a href="bibliography.html#EU_2012_34">152</a></span>], need to interact and exchange information to ensure safe cross-border railway operations. These organisations rely on different information management systems from multiple vendors, that are often incompatible with each other. To increase digital interoperability among heterogeneous data and information systems, ERA supports and maintains a set of base registries<sup class="footnote-reference" id="fr-fn151-1"><a href="#footnote-fn151">4</a></sup>, in the form of relational databases, where organisations input and access the different aspects of the information they manage and require.</p>
+<p>However, following such traditional approach lead to isolated digital environments that consequently added barriers to digital interoperability. Tightly coupling base registries to the applications that operate over them, triggered the proliferation of overlapping and difficult to manage data models hidden inside application code, which also increased maintenance and innovation costs. Moreover, stakeholder organisations such as IMs, have to report the same information multiple times for different registries, increasing the probability of data inconsistency issues, while adding more costs to IMs due to duplicated efforts.</p>
+<p>To address these issues, we propose a digital interoperability strategy for ERA, that adheres to the Linked Data principles<sup class="footnote-reference" id="fr-fn152-1"><a href="#footnote-fn152">5</a></sup> [<span data-citation-key="Heath_MC_2011"><a href="bibliography.html#Heath_MC_2011">2</a></span>] and relies on standard Semantic Web [<span data-citation-key="Berners-Lee_SA_2001"><a href="bibliography.html#Berners-Lee_SA_2001">1</a></span>] technologies. We built the foundations to establish a <em>semantic layer</em> for data integration within the agency, initially spanning three different base registries<sup class="footnote-reference" id="fr-fn153-1"><a href="#footnote-fn153">6</a></sup>: Register of Infrastructure (RINF), Register of Authorized Types of Vehicles (ERATV) and the Centralized Virtual Vehicle Register (ECVVR). We validate the usefulness of the approach by reusing the produced semantic data to support route compatibility checks (RCC), a highly-demanded use case in the railway domain. The RCC use case is stipulated and specified in EU regulations 2016/797 and 2019/773 [<span data-citation-key="EU_2016_797"><a href="bibliography.html#EU_2016_797">153</a></span>, <span data-citation-key="EU_2019_773"><a href="bibliography.html#EU_2019_773">154</a></span>] and was so far, unsupported by ERA due to interoperability issues among base registries. Additionally, we show the flexibility of graph-based data models, by integrating an additional external data source that complements the resulting Knowledge Graph.</p>
+<p>The contributions of this paper include (i) an <a href="https://data-interop.era.europa.eu/era-vocabulary/">ontology</a>, modelling railway infrastructure aspects, rolling stock and authorized vehicle types, and 28 independently managed reference datasets; (ii) a public and reusable <a href="https://www.era.europa.eu/domains/registers/era-knowledge-graph_en">RDF Knowledge Graph</a> with 13.8 million triples about the European railway infrastructure and more than 800 thousand rolling stocks; (iii) a cost-efficient system architecture that enables high-flexibility for use case support; and (iv) an open source and RDF native <a href="https://data-interop.era.europa.eu/route-compatibility">Web application</a> to support and process RCC queries.</p>
+<p>This work demonstrates how data-centric system design, powered by Semantic Web technologies, provides a framework to achieve data interoperability and unlock innovative use cases and applications. The results of the work presented in this paper had a strong impact on ERA<sup class="footnote-reference" id="fr-fn157-1"><a href="#footnote-fn157">7</a></sup>, which decided on making Semantic Web technologies the default setting for any future development of data, registers and specifications, under the agency’s remit, for data exchange mandated by the EU legal framework. The next steps, which are already underway, include further extending the ontology with additional aspects, aligned with the requirements of the railway domain and evolving the system architecture towards a production-ready solution, fully integrated with the data management workflows of ERA.</p>
+<p>The remainder of this paper is organized as follows: <a href="ch_4.2_related-work.html">Section 4.2</a> presents an overview of related work in the context of modelling approaches and interoperability for the railway domain. <a href="ch_4.3_data-and-use-case.html">Section 4.3</a> describes the data sources and the RCC use case requirements. <a href="ch_4.4_solution.html">Section 4.4</a> gives an overview and description of our proposed solution architecture. <a href="ch_4.5_discussion.html">Section 4.5</a> discusses advantages and limitations of the approach and <a href="ch_4.6_conclusion.html">Section 4.6</a> presents our conclusions and perspectives for future work.</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-fn148">
+<p>ERA is the European authority for cross-border rail traffic in Europe: <a href="https://www.era.europa.eu/content/era-becomes-european-authority-cross-border-rail-traffic-europe_en">https://www.era.europa.eu/content/era-becomes-european-authority-cross-border-rail-traffic-europe_en</a> <a href="#fr-fn148-1">↩</a></p>
+</li>
+<li id="footnote-fn149">
+<p>An Infrastructure Manager is defined as any body or firm responsible in particular for establishing, managing and maintaining railway infrastructure, including traffic management, control-command and signalling. <a href="#fr-fn149-1">↩</a></p>
+</li>
+<li id="footnote-fn150">
+<p>A Railway Undertaking is defined as any public or private licensed undertaking, the principal business of which is to provide services for the transport of goods and/or passengers by rail with a requirement that the undertaking ensure traction. <a href="#fr-fn150-1">↩</a></p>
+</li>
+<li id="footnote-fn151">
+<p><em>“A base registry is a trusted and authoritative source of information which can and should be digitally reused by others, where one organisation is responsible and accountable for the collection, use, updating and preservation of information.”</em> [<span data-citation-key="EUC_PO_2017"><a href="bibliography.html#EUC_PO_2017">12</a></span>] <a href="#fr-fn151-1">↩</a></p>
+</li>
+<li id="footnote-fn152">
+<p>Principles of Linked Data: <a href="https://www.w3.org/DesignIssues/LinkedData.html">https://www.w3.org/DesignIssues/LinkedData.html</a> <a href="#fr-fn152-1">↩</a></p>
+</li>
+<li id="footnote-fn153">
+<p>Base registries of ERA: <a href="https://www.era.europa.eu/registers_en">https://www.era.europa.eu/registers_en</a> <a href="#fr-fn153-1">↩</a></p>
+</li>
+<li id="footnote-fn157">
+<p>ERA’s roadmap for Linked Data mainstreaming: <a href="https://www.era.europa.eu/content/decision-n%C2%B0250-management-board-european-union-agency-railways-adopting-roadmap-data-and_en">https://www.era.europa.eu/content/decision-n%C2%B0250-management-board-european-union-agency-railways-adopting-roadmap-data-and_en</a> <a href="#fr-fn157-1">↩</a></p>
+</li>
+</ol>
 
                     </main>
 

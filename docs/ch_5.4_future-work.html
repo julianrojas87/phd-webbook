@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,17 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="future-work"><a class="header" href="#future-work">Future work</a></h1>
+                        <h1 id="54-future-work"><a class="header" href="#54-future-work">5.4 Future work</a></h1>
+<p>Future work beyond this PhD dissertation, could certainly continue exploring more advanced LDF-based APIs that aim to overcome the query performance issues observed both in <a href="ch_3_introduction.html">Chapters 3</a> and <a href="ch_4_introduction.html">4</a>. The results observed in the evaluation performed in <a href="ch_3.1_linked-connections.html">section 3.1</a> showed that a LDF-based API can achieve comparable performance results, and in some cases outperform traditional APIs when dealing with relatively small data sources (transport networks in this case). Therefore, applying multiple types of fragmentation simultaneously to a data source, in a way that guarantees that clients only have to deal with smaller (as observed in this work) and relevant subsets of the data, could enable to reach acceptable levels of query performance on the client-side, while maintaining all the cost-efficiency benefits for the data publisher. An example for the use case of route planning over public transport networks, could be to apply both geospatial and temporal fragmentation strategies, so that clients do not need to process unnecessary data coming from regions different to the ones that relate to their queries. In the case of long-distance route planning for railway networks, exploring how summarization techniques coming from route planning research (e.g., contraction hierarchies, multilevel Dijkstra, etc), could be applied and published as LDF-based APIs that enable efficient query execution on the client-side.</p>
+<p>In more general terms, exploring the creation of an interface-agnostic and linked traversal-based querying engine with support for specification-based interface description semantics, is needed to achieve fully automated and interoperable data exchange over LDF-based and APIs. Ongoing work on the <a href="https://treecg.github.io/specification/">TREE specification</a> aims to define a specification to semantically describe LDF APIs, which could enable SPARQL engines (e.g., <a href="https://comunica.dev/">Comunica</a>) to rely on such semantics for discovering and processing on the fly only the relevant subsets of a data source exposed by such LDF-based and APIs, similar to how Triple Pattern Fragments process SPARQL queries. For example, time-based and text-based fragmentation strategies could be used to efficiently solve SPARQL <code>FILTER</code> clauses without the need of copying the entire RDF data into local premises first nor having to host a fully-fledged SPARQL endpoint over the data.</p>
+<p>In parallel, it is necessary to investigate how to support all the additional aspects entailed by Data Spaces that were not considered on this work, such as usage control policies, decentralised identity management and trust. The approaches described in this work may be adapted to use cases present in domain-driven Data Spaces to provide a cost-efficient data exchange strategy. Yet, it remains unclear, for example, how specific usage policies could be defined and enforced over such LDF-based APIs.</p>
+<p>Lastly, looking into answering the question: <em>What is the highest priority API that an organisation publishing a dataset needs to implement?</em> Given that the typical answer is it depends on the data and the use case, it would be necessary to examine what kind of data interface could then be used to enable all possible interfaces (possibly on the fly). Strategies stemming from event-driven architectures are promising candidates for this type of research<sup class="footnote-reference" id="fr-fn187-1"><a href="#footnote-fn187">1</a></sup>.</p>
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-fn187">
+<p>Disclaimer: I am already part of ongoing research in this direction with Linked Data Event Streams <a href="https://w3id.org/ldes/specification">https://w3id.org/ldes/specification</a>. <a href="#fr-fn187-1">↩</a></p>
+</li>
+</ol>
 
                     </main>
 

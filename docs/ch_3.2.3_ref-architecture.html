@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,17 +179,80 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="reference-architecture"><a class="header" href="#reference-architecture">Reference architecture</a></h1>
+                        <h1 id="323-reference-architecture"><a class="header" href="#323-reference-architecture">3.2.3 Reference architecture</a></h1>
+<p>We designed and implemented a system architecture (<a href="ch_3.2.3_ref-architecture.html#figure3.12">figure 3.12</a>) to evaluate the performance of different strategies for live public transport data sharing on the Web. In this section we present the design choices and implementation details of its different modules.</p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="img/figure_3.12.png" alt="Figure 3.12"><span class="img-wrapper"><img src="img/figure_3.12.png" alt="Figure 3.12"></span></label></p>
+<div id="figure3.12" style="text-align: center"><strong>Figure 3.12.</strong> Reference architecture used to evaluate polling (HTTP) and push-based (SSE) approaches for publishing and consuming live public transport data for route planning.</div>
+
+<h2 id="3231-publishing-live-public-transport-updates"><a class="header" href="#3231-publishing-live-public-transport-updates">3.2.3.1 Publishing live public transport updates</a></h2>
+<p>We follow the LC specification for public transport data publishing. LC achieves higher <em>cost efficiency</em>, compared to equivalent full server-side route planning APIs [<span data-citation-key="Colpaert_ICWE_2017"><a href="bibliography.html#Colpaert_ICWE_2017">72</a></span>]. The data publishing module in the reference architecture is called <em>LC Server</em>. For its implementation we extended the <a href="https://github.com/linkedconnections/linked-connections-server">Linked Connections Server</a> (LCS), given its capabilities of integrating live updates out of the box [<span data-citation-key="Rojas_ISWC_2017"><a href="bibliography.html#Rojas_ISWC_2017">131</a></span>]. The server is implemented as a Node.js application and consists of the following sub-modules:</p>
+<ul>
+<li>
+<p><strong>Data Manager.</strong> Transforms both static and live public transport data to the LC data format. It takes as input GTFS and GTFS-Realtime data sources and uses the <a href="https://github.com/linkedconnections/gtfs2lc"><code>gtfs2lc</code></a> and <a href="https://github.com/linkedconnections/gtfsrt2lc"><code>gtfsrt2lc</code></a> libraries to perform data transformations.</p>
+</li>
+<li>
+<p><strong>Web Server.</strong> Exposes polling and push-based Web interfaces that clients use to access static and live data. The polling interface is a HTTP API that provides access to <em>Connection</em> documents and to the latest live updates using a reference date as input. The pushing interface is based on SSE and provides clients with updates in vehicle schedules.</p>
+</li>
+<li>
+<p><strong>Storage.</strong> Represents data storage on disk. Documents containing sets of ordered <em>Connections</em> and spanning a predefined time window, are created by the <em>Data Manager</em> and persisted on disk as files. Data are serialized using the <a href="https://www.w3.org/TR/json-ld11/">JSON-LD</a> format.</p>
+</li>
+</ul>
+<p>We study the cost and performance of polling and pushing Web interfaces. The polling interface of the LCS defines this access URL:</p>
+<pre><code class="language-text">  {operator}/connections?departureTime={iso-date}
+</code></pre>
+<p>Where <code>operator</code> is the name of the public transit operator and <code>iso-date</code> is the date and time for which a client requires information of vehicle departures. Upon request the LCS retrieves the document that contains <em>Connections</em> departing closest to the given departure time. It also checks if there are any available live updates that involve the requested document and merges them. An example of a <em>Connection</em> is shown in <a href="ch_3.2.3_ref-architecture.html#listing3.5">listing 3.5</a>.</p>
+<pre><code class="language-json">{
+    "@context": {
+        "lc": "http://semweb.mmlab.be/ns/linkedconnections#",
+        "gtfs": "http://vocab.gtfs.org/gtfs.ttl#"
+    },
+    "@id": "http://irail.be/connections/8885001/20200131/IC3231",
+    "@type": "lc:Connection",
+    "lc:departureStop": "http://irail.be/stations/NMBS/008885001",
+    "lc:arrivalStop": "http://irail.be/stations/NMBS/008885068",
+    "lc:departureTime": "2020-01-31T09:54:00.000Z",
+    "lc:arrivalTime": "2020-01-31T09:58:00.000Z",
+    "lc:departureDelay": 60,
+    "lc:arrivalDelay": 60,
+    "lc:direction": "Courtrai",
+    "gtfs:trip": "http://irail.be/vehicle/IC3231/20200131",
+    "gtfs:route": "http://irail.be/vehicle/IC3231",
+    "gtfs:pickupType": "gtfs:Regular",
+    "gtfs:dropOffType": "gtfs:Regular"
+}
+</code></pre>
+<div id="listing3.5" style="text-align: center"><strong>Listing 3.5.</strong> LC formatted as JSON-LD. The properties <em>departureDelay</em> and <em>arrivalDelay</em> indicate that live data is available for this <em>Connection</em>.</div>
+
+<p>Schedule documents can be cached by clients, which can reuse them to answer more than one query. This reduces the amount of requests that need to be handled by the server. However, live updates quickly invalidate caches and clients need to request again updated LC documents for new queries. In the worst case, all <em>Connections</em> of a document change due to a live update, but the majority of the time only a handful of <em>Connections</em> are updated, causing that significant parts of LC documents are sent over and over again. For this reason, we extended the LCS implementation and added a new resource to its HTTP API that allows to retrieve only <em>Connections</em> that have changed since a given time: <code>{operator}/events?lastSyncDate={iso-date}</code>. This resource allows clients to synchronize their local caches with the latest available data.</p>
+<p>We also implemented a pushing Web interface using SSE. Clients can subscribe to it on <code>{operator}/events/sse</code> and receive the latest schedule updates as they occur. We use the W3C standardized SOSA ontology to identify and semantically describe schedule updates for particular <em>Connections</em>. Our <a href="https://github.com/DylanVanAssche/linked-connections-server">implementation is available online</a>.</p>
+<h2 id="3232-consuming-live-public-transport-updates"><a class="header" href="#3232-consuming-live-public-transport-updates">3.2.3.2 Consuming live public transport updates</a></h2>
+<p>A <a href="https://github.com/DylanVanAssche/QRail/tree/develop/cli/qrail-cli">command line interface (CLI) client application</a> was implemented for processing route planning queries on top of LC-based data. It implements the CSA algorithm on its <em>Profile</em> variant [<span data-citation-key="Dibbelt_JEA_2018"><a href="bibliography.html#Dibbelt_JEA_2018">124</a></span>]. This allows calculating not only the <em>Earliest Arrival Time</em> but also later route alternatives, providing a maximum amount of desired vehicle transfers along the way. The selection of this algorithm is based on the data model defined by the LC specification. LC defines a sorted by departure time array of <em>Connections</em>, which is the data structure that CSA requires to process queries.</p>
+<p>This client consist of a library called <a href="https://github.com/DylanVanAssche/QRail"><em>QRail Library</em></a> that was built using the <a href="https://www.qt.io/">Qt framework</a>. We selected this framework due to its cross-platform portability including Android or iOS. The client’s modules are the following:</p>
+<ul>
+<li>
+<p><strong>Network Manager.</strong> Handles the communication capabilities of the client. It was built by extending the Qt <em>QNetworkAccessManager</em> library to handle SSE-based interactions. It keeps an in-memory local cache to store the latest available schedule information.</p>
+</li>
+<li>
+<p><strong>Connections Factory.</strong> Retrieves data (either from cache or from the server) and builds <em>Connection</em> Qt objects to calculate route plans.</p>
+</li>
+<li>
+<p><strong>Connection Scan Algorithm.</strong> Contains the implementation of the CSA <em>Profile</em> variant.</p>
+</li>
+</ul>
+<h2 id="3233-dynamic-rollbacks-for-csa"><a class="header" href="#3233-dynamic-rollbacks-for-csa">3.2.3.3 Dynamic rollbacks for CSA</a></h2>
+<p>We extended CSA to address the problem of needing to perform complete route plan re-calculations, every time a new update is available on the client. Full route plan re-calculations increase the amount of requests and processing that both clients and servers need to handle, thus increasing computational costs.</p>
+<p>Given a route plan query (e.g., from Bruges to Brussels departing today at 17:00), CSA starts its execution by scanning <em>Connections</em> departing no earlier than 17:00 until it finds the earliest arrival route. From this point, the algorithm performs predefined scan cycles, going back in time over the <em>Connections</em> array and adding every time for example, 30 minutes to the earliest arrival time. This allows finding later alternative route plans for the given query.</p>
+<p>In our implementation, every time a new <em>Connections</em> document is requested during algorithm execution, we create a snapshot of CSA’s internal state containing the <em>Connections</em> currently involved in the, so far discovered routes. Thanks to these snapshots we can determine the exact index in the <em>Connections</em> array, from which CSA needs to recalculate when there are updates in the route plans. Given that CSA <em>Profile</em> goes back in time over the <em>Connections</em> array, the closer an updated <em>Connection</em> is to the departure stop, the faster the recalculation process will be. The set of snapshots is kept in memory and updated every time a new query is processed.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="ch_3.2.2.4_live-data.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ch_3.2.2_related-work.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="ch_3.2.3.1_publishing-live-updates.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch_3.2.4_evaluation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -197,11 +262,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="ch_3.2.2.4_live-data.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="ch_3.2.2_related-work.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="ch_3.2.3.1_publishing-live-updates.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch_3.2.4_evaluation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

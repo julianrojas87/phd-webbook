@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,12 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="state-of-the-art"><a class="header" href="#state-of-the-art">State of the art</a></h1>
+                        <h1 id="222-state-of-the-art"><a class="header" href="#222-state-of-the-art">2.2.2 State of the art</a></h1>
+<p>Representational State Transfer (REST) is a set of constraints, derived while standardizing HTTP/1.1 [<span data-citation-key="Fielding_FSE_2017"><a href="bibliography.html#Fielding_FSE_2017">76</a></span>]. The <em>uniform interface constraint</em> requires that every individual information resource on the Web is accessed through a single identifier – an HTTP URI – regardless of the specific format chosen to represent it. These identifiers can be used to link information resources together through <em>hypermedia controls</em> such as links or Web forms. This allows user agents to discover new information resources while following their nose. Also for non-information resources, such as real-world objects, the <em>Linked Data</em> principles advocate for using similar HTTP URIs, allowing a uniform strategy to look up the definitions of identifiers, avoiding conflicting identifiers. Other constraints were formulated such as the caching constraint, client-server constraint or the statelessness constraint. As with any architectural style, developers can choose to follow these constraints, or to ignore them. By following these constraints, REST promises beneficial properties, such as network efficiency, scalability, reliability, a good user-perceived performance and simplicity. The REST architectural constraints do not further specify how a specific API should be implemented. To that extent, the World Wide Web Consortium (W3C) has published a list of <a href="https://www.w3.org/TR/dwbp/">best practices for data on the Web</a>. The 35 best practices are generic publishing guidelines for data. They have been extended in collaboration with the Open Geospatial Consortium (OGC), to also create the <a href="https://www.w3.org/TR/sdw-bp/">“Spatial Data on the Web Best Practices”</a>. Finally, Hydra, a community group at the W3C, produced a vocabulary of URIs that allow for describing hypermedia controls in Linked Data documents.</p>
+<p>RDF streams [<span data-citation-key="Dellaglio_IJSWIS_2014"><a href="bibliography.html#Dellaglio_IJSWIS_2014">77</a></span>] are a popular way for representing live Linked Data data on the Web. <a href="https://w3id.org/rsp/vocals#">VoCaLS</a> introduced a vocabulary and ontology that aims to describe RDF streams and access points for publishing and consuming such streams. TripleWave [<span data-citation-key="Mauri_ISWC_2015"><a href="bibliography.html#Mauri_ISWC_2015">78</a></span>] is an approach in which RDF streams can be published by mapping raw data streams to RDF and publishing them based on the Linked Data principles. While TripleWave does allow for mapping streaming data to Linked Data on the fly, it does not yet provide a strategy to store nor access historic data.</p>
+<p>The approach in this paper is based on the concepts of <em>Stream Graphs</em> (sGraphs) and <em>Instantaneous Graphs</em> (iGraphs) [<span data-citation-key="Barbieri_LDOW_2010"><a href="bibliography.html#Barbieri_LDOW_2010">79</a></span>], which are both <em>named graphs</em> [<span data-citation-key="Carroll_WWW_2005"><a href="bibliography.html#Carroll_WWW_2005">80</a></span>]. In this approach an RDF stream corresponds to a sGraph, which references iGraphs. Each iGraph is annotated with a timestamp that represents the timestamp of each RDF statement in that graph. Using this model we group observations in Linked Data documents to provide access to historic stream data. This contrasts with the RDF Stream Processing (RSP) community, which mainly focuses on the last updates. This idea is described further in <a href="ch_2.2.4_time-series.html">section 2.2.4</a>.</p>
+<p>RSP engines [<span data-citation-key="Barbieri_WWW_2009"><a href="bibliography.html#Barbieri_WWW_2009">81</a></span>, <span data-citation-key="Le-Phuoc_ISWC_2011"><a href="bibliography.html#Le-Phuoc_ISWC_2011">82</a></span>] can be used for making RDF streams queryable using an extended <a href="https://www.w3.org/TR/sparql11-query/">SPARQL</a> syntax. TPF-QS [<span data-citation-key="Taelman_ESWC_2016"><a href="bibliography.html#Taelman_ESWC_2016">83</a></span>] was introduced as an alternative to server-side RSP engines with the goal of making RDF stream server-side publishing possible at a low cost, with a client-side RSP engine. In this approach, several time-annotation techniques were investigated, of which annotation using named graphs caused the least overhead. The results however showed that this approach has scalability issues when querying historic data [<span data-citation-key="Taelman_ESWC_2016"><a href="bibliography.html#Taelman_ESWC_2016">83</a></span>]. In this paper we do not go further into these query engines, as a good data publishing strategy should enable third parties to use the data in their query engines. Therefore, we do not see a query evaluation endpoint as a core task of a data publisher.</p>
+<p>Finally, <em>on a Web of Data Streams</em> introduced 7 requirements [<span data-citation-key="Dellaglio_DeSemWeb_2017"><a href="bibliography.html#Dellaglio_DeSemWeb_2017">84</a></span>] for data streams in order to make streaming data reusable. These requirements, created independently around the same time, show parallels with our requirements introduced in the next section.</p>
 
                     </main>
 

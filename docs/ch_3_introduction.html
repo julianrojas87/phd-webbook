@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,14 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="cost-efficient-publication-of-public-transport-data-on-the-web"><a class="header" href="#cost-efficient-publication-of-public-transport-data-on-the-web">Cost-efficient publication of public transport data on the Web</a></h1>
+                        <h1 id="3-cost-efficient-publication-of-public-transport-data-on-the-web"><a class="header" href="#3-cost-efficient-publication-of-public-transport-data-on-the-web">3. Cost-efficient publication of public transport data on the Web</a></h1>
+<p><em>“Transportation is the center of the world! It is the glue of our daily lives. When it goes well, we don’t see it. When it goes wrong, it negatively colors our day, makes us feel angry and impotent, curtails our possibilities”</em></p>
+<div style="text-align: right">— Robin Chase, transportation entrepreneur, CEO of Zipcar</div>
+
+<p>APIs are recommended to (public) organisations by EU regulatory frameworks as the <em>way-to-go</em> strategy to enable interoperable data exchange. However the inherent costs associated with the development, deployment and maintenance of new APIs is often an obstacle. The Linked Data Fragments (LDF) conceptual framework encourages the study of alternative API designs that go beyond the traditional assumption of server-side systems having to carry the full load of resolving query requests. In this chapter, 2 thorough studies are presented about the associated computational costs and performance of an LDF-based API for publishing public transport timetables, particularly designed (but not limited) to enable the calculation of a fully client-side route planning algorithm.</p>
+<p>The API in question is called a Linked Connections (LC) API. Linked Connections define a semantic data model and also a Linked Data publishing specification, that describes public transport schedules (of bus, train, tram, metro, etc) in term of Connections, where a Connection is an entity that describes the event of a vehicle departing at t<sub>0</sub> from a station S<sub>0</sub> and arriving on station S<sub>1</sub> at t<sub>1</sub>. According to the LC specification, a LC API will publish an ordered collection of data fragments (containing Connections) based on Connection’s departure time. Fragments also include semantically described hypermedia links to the previous and next fragment (if any), which allows client applications to traverse and retrieve only those data fragments that are relevant for finding, for example, the fastest route between two given stations. The reference architectural design of a LC server is described, as well as mechanisms to efficiently publish live and historical data. Additionally an evaluation comparing traditional HTTP-based polling interfaces and publish/subscribe interfaces such as Server-Sent Events is done to assess the scalability and limitations of both approaches.</p>
+<p>Unlike the other 2 chapters, the work presented in this chapter was not directly performed with the collaboration of real public transport operators, although multiple attempts were made with several Belgian operators. However, the studies were carried out entirely with real data from more than 20 real operators from around the world, thanks to the open data published by them on a regular basis.</p>
+<p>This chapter is mainly focused on studying RQ2, to determine if alternative API design such as LDF-based APIs, can provide more cost-efficient solutions for publishing semantically interoperable data on the Web.</p>
 
                     </main>
 

@@ -1,1 +1,8 @@
-# Conclusions
+# 5. Conclusions
+
+*"The Semantic Web will never work because it depends on businesses working together, on them cooperating."*
+<div style="text-align: right">— Stephen Downes, philosopher, National Research Council of Canada</div>
+
+Despite the negative connotation projected by the opening quote of this final chapter, I decided to use it, since I believe it touches upon the most important aspect required to achieve true data interoperability. This PhD dissertation tries to stand as a demonstrator of how Linked Data technologies can be used in practice and in real environments to support semantically and technically interoperable applications, at least in the Transport domain (although there are no particular aspects that constrain the solutions shown in this work only to the Transport domain and they could be adapted to other domains as well). Yet, the most important lesson learnt while working on the different use cases described in this work, was that the main obstacles to overcome were usually of human nature, for example, convincing the people in charge to provide access to a data source or more importantly to introduce changes on the way to model, publish and manage their data. Therefore, I point again towards the initial references made at the start of [section 1](ch_1_introduction.md), claiming that the challenge of interoperability goes beyond a technical aspect and entails a multidisciplinary effort (including social communication) to be successfully addressed.
+
+Next I will present the conclusions drawn from these works, regarding the concrete research question and hypotheses formulated in [section 1.4](ch_1.4_research-goals.md).

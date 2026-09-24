@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,17 +179,45 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="external-data-source"><a class="header" href="#external-data-source">External data source</a></h1>
+                        <h1 id="432-external-data-source"><a class="header" href="#432-external-data-source">4.3.2 External data source</a></h1>
+<p>There are known limitations for ERA’s base registries, as is the case of RINF and the limited granularity it gives over the railway topology. RINF provides a view over the railway infrastructure, commonly referred as a meso-level view<sup class="footnote-reference" id="fr-fn165-1"><a href="#footnote-fn165">1</a></sup>, where complex topological structures inside stations, junctions, switches, etc., are abstracted into single nodes in the network graph. Route calculations over this limited view, may wrongfully assume certain direction changes, not possible in the real world. Calculating end-to-end routes with high accuracy, requires further data about the connectivity within each network node. This connectivity issue currently stands as one of the main challenges, for an accurate and reliable data source description of the European railway infrastructure topology. For this reason we also consider an external data source, provided by the Dutch IM ProRail, which provides an additional topological description for addressing this issue limited to the region of Utrecht in The Netherlands.</p>
+<h2 id="4321-connectivity-data-in-the-utrecht-area"><a class="header" href="#4321-connectivity-data-in-the-utrecht-area">4.3.2.1 Connectivity data in the Utrecht area</a></h2>
+<p>The Dutch IM ProRail, provided us with an additional data source for exploring an alternative solution for the lack of real information about the internal connectivity inside network nodes (also called operational points). It consists of a table that groups all the different permutations of incoming and outgoing tracks for a set of operational points, and states if they are connected or not.</p>
+<p>The operational point <code>OPx</code> (<a href="ch_4.3.2_external.html#figure4.1">figure 4.1</a>) has two incoming tracks (<code>T1</code> and <code>T2</code>) from <code>OPy</code> and belonging to the national line <code>LineJ</code>. We know these are incoming tracks thanks to the logical direction defined for <code>LineJ</code>, despite <code>T1</code> being a bidirectional track. <code>OPx</code> also has two outgoing tracks (<code>Ta</code>, <code>Tb</code>), going towards <code>OPw</code> and belonging to another national line <code>LineK</code>. Based on this information we establish the correct connectivity that reflects real-world behavior.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th style="text-align: center">IN_Line</th><th style="text-align: center">IN_OP</th><th style="text-align: center">IN_Track</th><th style="text-align: center">OP</th><th style="text-align: center">OUT_Track</th><th style="text-align: center">OUT_OP</th><th style="text-align: center">OUT_Line</th><th style="text-align: center">Connected</th></tr>
+</thead>
+<tbody>
+<tr><td style="text-align: center">LineJ</td><td style="text-align: center">OPy</td><td style="text-align: center">T1</td><td style="text-align: center">OPx</td><td style="text-align: center">Ta</td><td style="text-align: center">OPw</td><td style="text-align: center">LineK</td><td style="text-align: center"><strong>true</strong></td></tr>
+<tr><td style="text-align: center">LineJ</td><td style="text-align: center">OPy</td><td style="text-align: center">T1</td><td style="text-align: center">OPx</td><td style="text-align: center">Tb</td><td style="text-align: center">OPw</td><td style="text-align: center">LineK</td><td style="text-align: center"><strong>true</strong></td></tr>
+<tr><td style="text-align: center">LineJ</td><td style="text-align: center">OPy</td><td style="text-align: center">T2</td><td style="text-align: center">OPx</td><td style="text-align: center">Ta</td><td style="text-align: center">OPw</td><td style="text-align: center">LineK</td><td style="text-align: center"><strong>false</strong></td></tr>
+<tr><td style="text-align: center">LineJ</td><td style="text-align: center">OPy</td><td style="text-align: center">T2</td><td style="text-align: center">OPx</td><td style="text-align: center">Tb</td><td style="text-align: center">OPw</td><td style="text-align: center">LineK</td><td style="text-align: center"><strong>true</strong></td></tr>
+</tbody>
+</table>
+</div>
+<div id="table4.1" style="text-align: center"><strong>Table 4.1.</strong> All the possible permutations between incoming and outgoing tracks of OPx, plus a column that states if there is a possible connection between two pairs of tracks.</div>
+
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="img/figure_4.1.png" alt="Figure 4.1"><span class="img-wrapper"><img src="img/figure_4.1.png" alt="Figure 4.1"></span></label></p>
+<div id="figure4.1" style="text-align: center"><strong>Figure 4.1.</strong> a) a schematic diagram of an operational point where its internal connections are unknown; b) how this information can be completed from data provided in <a href="ch_4.3.2_external.html#table4.1">table 4.1</a>.</div>
+
+<hr>
+<ol class="footnote-definition">
+<li id="footnote-fn165">
+<p>See section 1.6 of [<span data-citation-key="IRS_30100"><a href="bibliography.html#IRS_30100">155</a></span>] for a description of railway view levels. <a href="#fr-fn165-1">↩</a></p>
+</li>
+</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="ch_4.3.1.3_cvvr.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ch_4.3.1_base-registries.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="ch_4.3.2.1_utrecth.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="ch_4.3.3_external.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -197,11 +227,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="ch_4.3.1.3_cvvr.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="ch_4.3.1_base-registries.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="ch_4.3.2.1_utrecth.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="ch_4.3.3_external.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

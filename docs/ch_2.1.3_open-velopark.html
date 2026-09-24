@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,39 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="open-velopark-vocabulary"><a class="header" href="#open-velopark-vocabulary">Open Velopark vocabulary</a></h1>
+                        <h1 id="213-open-velopark-vocabulary"><a class="header" href="#213-open-velopark-vocabulary">2.1.3 Open Velopark vocabulary</a></h1>
+<p>Motivated by the need of having a common data model capable of capturing all the complexity inherent to bicycle parkings, we created the <a href="https://data.velopark.be/openvelopark/vocabulary">Open Velopark Vocabulary (OVV)</a>. We incorporated the input of several bicycle parking managers, which includes public authorities, public transport operators and pro-cycling organizations, all having the goal of bringing reliable and useful information to bicycle users. For the vocabulary creation we followed the guidelines established by the <a href="https://www.w3.org/TR/ld-bp/">Best Practices for publishing Linked Data</a> document, emphasizing on reusing standard and existing vocabularies.</p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="img/figure_2.1.png" alt="Figure 2.1"><span class="img-wrapper"><img src="img/figure_2.1.png" alt="Figure 2.1"></span></label></p>
+<div id="figure2.1" style="text-align: center"><strong>Figure 2.1.</strong> Overview of OVV that shows how it relates and extends concepts from Schema.org and MobiVoc.</div>
+
+<p>The core of OVV is based on MobiVoc, which is in its turn based on the Schema.org data model. OVV thus extends both MobiVoc and Schema.org to define a set of concepts and properties that are not originally considered by these vocabularies and are deemed important for providing useful information for cyclists (see <a href="ch_2.1.3_open-velopark.html#figure2.1">figure 2.1</a>). The main focus of OVV extensions lies in providing definitions for bicycle parking associated services and features and more detailed descriptions of operational and physical properties of bicycle parking facilities (see <a href="ch_2.1.3_open-velopark.html#table2.1">Table 2.1</a>).</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name</th><th>Type</th><th>Extends</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#Bicycle">Bicycle</a></td><td>Class</td><td><a href="https://schema.org/Vehicle">schema:Vehicle</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#BikeParkingFeature">Bike Parking Feature</a></td><td>Class</td><td><a href="https://schema.org/LocationFeatureSpecification">schema:LocationFeatureSpecification</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#SecurityFeature">Security Feature</a></td><td>Class</td><td><a href="https://schema.org/LocationFeatureSpecification">schema:LocationFeatureSpecification</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#hasSection">has section</a></td><td>Object Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#hasCountingSystem">has counting system</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#Capacity">mv:Capacity</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#covered">covered</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#finalClosingDate">final closing date</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#intendedAudience">intended audience</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#maximumParkingDuration">max parking duration</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#openingHoursExtraInformation">extra information</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#postRemovalAction">post removal action</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#removalConditions">removal conditions</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#restrictions">restrictions</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#initialOpeningDate">initial opening date</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+<tr><td><a href="https://data.velopark.be/openvelopark/vocabulary#temporarilyClosed">temporarily closed</a></td><td>Data Property</td><td><a href="http://schema.mobivoc.org/#BicycleParkingStation">mv:BicycleParkingStation</a></td></tr>
+</tbody>
+</table>
+</div>
+<div id="table2.1" style="text-align: center"><strong>Table 2.1.</strong> OVV avoids to redefine existing concepts and adds domain-specific entities and properties.</div>
+
+<p>OVV defines a core-independent <a href="https://data.velopark.be/openvelopark/terms#">list of terms</a> that provides definitions to domain-specific entities such as types of parking facilities (e.g., bicycle stand, resident parking, etc), types of bicycles (e.g., electric bikes, cargo bikes, etc) and types of features (e.g., parking services and security characteristics). These entities were defined through an iterative process that involved domain experts from the different organizations involved in the Velopark project. Additionally, they were also reviewed and refined by members of the <a href="https://www.veiligstallen.nl/">VeiligStallen.nl</a> technical team. VeiligStallen.nl is a bicycle parking platform from the Netherlands, that has provided an information hub over the last 10 years and was an inspiration of the Velopark initiative.</p>
 
                     </main>
 

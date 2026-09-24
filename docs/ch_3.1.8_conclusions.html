@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,16 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="conclusions-and-future-work"><a class="header" href="#conclusions-and-future-work">Conclusions and future work</a></h1>
+                        <h1 id="318-conclusions-and-future-work"><a class="header" href="#318-conclusions-and-future-work">3.1.8 Conclusions and future work</a></h1>
+<p>Our work stands as a contribution for the PT domain as a cost-efficient data publishing alternative that includes live schedule updates and access to granular historical data. We propose a different approach on how live data is published, compared to traditional APIs, that facilitates data reuse for client applications without sacrificing cost-efficiency on the server-side. At the same time we enable data publishers to also share historical data, which still remain largely unavailable.</p>
+<p>The use of semantic Web technologies establishes a framework for data interoperability on the PT domain. Ideally, every PT operator would publish and maintain stable identifiers for their resources such as stops, routes and connections. This way, semantic interoperability starts at the source, where all derived datasets can reuse the same identifiers. This approach not only semantically models the fundamental entities and concepts of PT schedules and its updates, but also the interfaces that give access to the data. It relies on the Web infrastructure to model entire datasets as collections of HTTP resources, while including metadata that semantically describes the access patterns to traverse the collection and find more relevant data. This constitutes an important contribution for the PT domain and also sets an example that may be applied on different domains or use cases.</p>
+<p>Being a Linked Data-based approach, a LC interface not only enables client applications to perform route planning-related calculations, but could also allow them to apply (on their own premises) other types of querying approaches (e.g., SPARQL) to support novel use cases. A client application able to interpret the hypermedia controls of LC data fragments could traverse the LC collection to solve a federated SPARQL query (for example with Comunica [<span data-citation-key="Taelman_ISWC_2018"><a href="bibliography.html#Taelman_ISWC_2018">137</a></span>]) to find departing vehicles from stops having images (<a href="http://www.wikidata.org/prop/direct/P18">wdt:P18</a>) available in Wikidata (e.g. <a href="https://www.wikidata.org/wiki/Q800814">Gent-Sint-Pieters</a>). We hope an approach such as Linked Connections inspires PT organizations to publish their raw base data as a back-bone for creating new and innovative applications.</p>
+<p>Considering the importance of query evaluation performance for supporting practical use cases, we evaluated our approach looking into understanding the factors that drive high performance and how API design can be adjusted to achieve it. With regards to our first research question <strong>RQ1</strong>, we conclude to accept its associated hypothesis <strong>H1</strong>, which constitutes an important result that highlights the importance of adapting API data structures to improve the performance of use case-specific query evauation. Regarding research question <strong>RQ2</strong>, we also conclude to accept its associated hypothesis <strong>H2</strong>. Results showed that size in terms of stops and connections is highly correlated to query evaluation performace. We could also see that density and average connection duration can also provide an indication of the expected performance. Additionally, we observed that an external factor as the number of scanned connections of expected queries could also guide API design as e.g., the size of data fragmentation.</p>
+<p>An important finding of this work is the confirmation that our approach provides an acceptable performance to be used in practical scenarios for relativelly small PT networks (&lt; 1000 stops). It was also evident that larger networks still remain unfeasible to be published and used in practical scenarios using this approach. This was determined by looking at the measured response times in comparison to a state of the art solution such as OpenTripPlanner, during our evaluations related to research question <strong>RQ3</strong> and its associated hypothesis <strong>H3</strong>. Results confirmed the superior cost-efficiency and scalability of our approach in all cases, despite the lower query performance of larger networks. More importantly, for smaller networks our approach gave as good as and even better query performace than OpenTripPlanner. Based on these results we may conclude to accept <strong>H3</strong> for PT networks with less than 1000 stops.</p>
+<p>These results may provide a reference guideline for data publishers to help balance the financial costs associated to open data publishing, wether they are required to do so by legal mandate or motivated by a business interest. The scalability evaluation results provide clear indicators of the amount of computational resources that would be needed to support a route planning service for a certain PT network, architecture and querying load. These could be then used to estimate practical financial costs on a certain cloud provider based on up to date pricing models and according to the capabilities and resources available to the data publisher. Yet, further studies can be made on cost estimation of (Linked Data) APIs based on data source characteristics and expected queries.</p>
+<p>Further research is needed to optimize use case driven query performance without compromising on cost-efficiency for both data publishers and reusers. On-going and future research is investigating alternative and additional fragmentation possibilities beyond time-based, such as geospatially [<span data-citation-key="Delva_JWE_2021"><a href="bibliography.html#Delva_JWE_2021">138</a></span>]. The results shown in this paper are instrumental in that regard, as they also provide indications about network characteristics where higher performance can be expected and thus, how larger networks could be further fragmented so that individual sub-networks render acceptable query evaluation performance.</p>
+<h2 id="acknowledgements"><a class="header" href="#acknowledgements">Acknowledgements</a></h2>
+<p>We would like to thank David Chaves Fraga and Oscar Corcho for pushing us forward to write this paper.</p>
 
                     </main>
 

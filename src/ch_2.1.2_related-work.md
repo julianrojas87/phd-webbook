@@ -1,1 +1,19 @@
-# Related Work
+# 2.1.2 Related work
+
+In this section we present an overview of related data models that up to different degrees, describe bicycle-related infrastructure. We also describe different approaches that are currently followed to publish bicycle-related information as Open Data.
+
+## 2.1.2.1 Modelling bicycle infrastructure data
+
+Providing cyclists with useful information about related infrastructure such as parkings, requires models able to capture and describe all their relevant characteristics and features. Definitions of entities and properties related to cycling infrastructure can be found in general purpose vocabularies like [Schema.org](https://schema.org). For example `schema:ParkingFacility` or `schema:openingHours` represent two concepts directly related to the modeling bicycle parkings. However, Schema.org does not consider many domain-specific aspects, needed for giving detailed and useful information to cyclists. This occurs because Schema.org is meant to provide descriptions for a core of common topics, relying on extensions to cover more in-depth topic's details [@@Guha_CACM_2016].
+
+The creators of [MobiVoc](http://schema.mobivoc.org/) followed the same rationale. MobiVoc defines a vocabulary for mobility-related concepts that extends Schema.org classes by establishing *subclass* relations with Schema.org classes. Such relations are established by means of the `rdfs:subClassOf` predicate. Even though MobiVoc specializes on mobility and further defines domain related concepts, it still lacks coverage for cyclic infrastructure specific entities. For example, it does not give definitions for parking security features, which often are important criteria for cyclist looking for parking places.
+
+Other related work includes the [Parking Ontology](http://ontology.eil.utoronto.ca/icity/Parking/), the [General Bikeshare Feed Specification (GBFS)](https://github.com/NABSA/gbfs) and the [Mobility Data Specification (MDS)](https://github.com/openmobilityfoundation/mobility-data-specification). The Parking Ontology focuses on describing car parking areas and does not consider bicycle-related domain knowledge. GBFS defines a JSON-based specification for real-time and read-only data about status of bike sharing stations. MDS defines a set of APIs to facilitate information exchange between public authorities and dockless mobility service providers (e.g, e-scooters, mopeds, bicycles). Both GBFS and MDS are mostly focused on describing operational aspects of mobility services and lack formal semantics on their data models.
+
+## 2.1.2.2 Bicycle Infrastructure as Open Data
+
+Open and machine-readable data is fundamental for the creation of applications that provide useful and reliable information to cyclists. Infrastructure managers commonly publish their data in the form of data dumps or via HTTP APIs. For instance, the data portal of the city of Ghent, Belgium publishes their [bicycle parking data](https://data.stad.gent/explore/dataset/real-time-bezettingen-fietsenstallingen-gent/information/) using both approaches.
+
+OpenStreetMap (OSM) can also be considered as an open data source for bicycle infrastructure information [@@Fester_IJST_2020]. It also provides data dumps and can be queried via the [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API). Given their high server cost, open HTTP APIs often impose request limits (as is the case for Ghent and Overpass endpoints) or expect to handle simple queries only [@@Olbricht_OSM_2015]. Data dumps on the other hand, can be seen as a mirror of the original data source and are outdated since the moment of their creation, which becomes an issue, specially when publishing live data [@@Rojas_WWW_2018].
+
+Another popular alternative, motivated by SEO (Search Engine Optimization) guidelines is the embedding of structured data into HTML using Schema.org as a data model, and JSON-LD or RDFa as serialization formats. This helps search engines to better classify and index websites, but it is hard to reuse by applications due to discoverability and even legal issues when scraping websites.

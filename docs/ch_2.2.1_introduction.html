@@ -29,16 +29,18 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ecb7eda8.js";
+            window.path_to_searchindex_js = "searchindex-13c00bef.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8a582093.js"></script>
+        <script src="toc-1326e24c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,7 +179,24 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+                        <h1 id="221-introduction"><a class="header" href="#221-introduction">2.2.1 Introduction</a></h1>
+<p>Live open datasets, in this paper, are defined as datasets that can be modeled using a ledger-like data model, as illustrated in <a href="ch_2.2.1_introduction.html#figure2.4">figure 2.4</a>. Examples would be sensor observations in the public domain about e.g., air quality, noise level, street occupancy, vacant parking spaces, temperature, river water level, wind speed or state of public lighting systems and traffic lights. Furthermore, also slower changing data can be modeled as live data, for example, administrative data published by public services, such as the local decisions of a city council [<span data-citation-key="Buyle_ISWC_2016"><a href="bibliography.html#Buyle_ISWC_2016">71</a></span>], wanting to reduce the latency between updated legislation and user advice provided by third party interfaces. Potentially, also predictions of future, or planning data can be published, such as with public transport timetables [<span data-citation-key="Colpaert_ICWE_2017"><a href="bibliography.html#Colpaert_ICWE_2017">72</a></span>] or occupancy predictions [<span data-citation-key="Vandewiele_WWW_2017"><a href="bibliography.html#Vandewiele_WWW_2017">73</a></span>].</p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="img/figure_2.4.png" alt="Figure 2.4"><span class="img-wrapper"><img src="img/figure_2.4.png" alt="Figure 2.4"></span></label></p>
+<div id="figure2.4" style="text-align: center"><strong>Figure 2.4.</strong> Live or real-time data are data modelled by "observations" (black ticks). A live update is when new observations come into play. Older data is historic data. Optionally, planned data or predictions can be published.</div>
+
+<p>Publishing data for maximum reuse – the goal behind open data – is particularly different than sharing data between only two parties. First, one cannot anticipate on specific questions: any question can be asked with an <em>open world assumption</em>. Second, it becomes too expensive for both consumer to reuse the data, as for the publisher to share data, if there is a manual negotiation process that needs to take place. Therefore, Open Data publishing is an automation challenge on a legal, technical, syntactic, semantic and querying level [<span data-citation-key="Colpaert_PhD_2017"><a href="bibliography.html#Colpaert_PhD_2017">74</a></span>].</p>
+<p>Legally, open data licenses are described as part of the <a href="http://opendefinition.org">Open Definition</a>. Technically, the HTTP protocol can be used to bring datasets physically together. Syntactically, the RDF 1.1 W3C specification standardizes open formats for all data that can be modeled in triples. Semantically, using HTTP URIs avoids conflicting identifiers and makes the meaning of the identifier accessible by doing a simple lookup. Data publishers can reuse URIs from existing domain models, making the data more useful to a broader audience. Using the HTTP protocol as a uniform interface, <em>content negotiation</em> can deliver different serializations for the same information resources, making the identifiers technically interoperable over software systems. Furthermore, also profiles [<span data-citation-key="Verborgh_SDSV_2016"><a href="bibliography.html#Verborgh_SDSV_2016">75</a></span>] can be negotiated, giving a more fine-grained choice of which domain model is preferred by a user agent.</p>
+<p>In order for clients to be able to query over different sources, we propose to look for a minimal contract between the server and the client. The looser this contract, the higher the probability that user agents can consume another dataset without modifying its code; hence, lowering the cost for adoption of heterogeneous data on the Web. In this paper we design such information system by proposing a set of requirements that follow the REST constraints and aim for maximizing reusability of live open datasets and their historic observations. Furthermore, we present a proof of concept of live open data on the Web, portraying public parking availability of several cities in Flanders. Finally, in order to have a clearer picture of the cost-efficiency trade-offs inherent to publishing live open data on the Web, we propose an experiment to study different Web interface setups that follow polling or publish-subscribe strategies.</p>
+<p>The contributions of this paper are:</p>
+<ol>
+<li>
+<p>We propose a minimum set of technical requirements to publish live data over HTTP for the 13 biggest cities in Flanders</p>
+</li>
+<li>
+<p>HTTP polling and publish/subscribe based approaches such as Websockets can be used to publish open data streams on the Web. We designed a preliminary experiment in order to find out under what conditions is more suitable to select one approach or the other for stream open data publishing.</p>
+</li>
+</ol>
+<p>The remainder of the article is structured as follows. We first describe the state of the art in <a href="ch_2.2.2_sota.html">section 2.2.2</a>. We then list the most important needs in an Open Data context in sections <a href="ch_2.2.3_live-data.html">2.2.3</a> and <a href="ch_2.2.4_time-series.html">2.2.4</a>, and then describe our proof of concept implementation (<a href="ch_2.2.5_ltss.html">section 2.2.5</a>) and proposed experiment to evaluate the cost-efficiency of different Web interfaces (<a href="ch_2.2.6_evaluation.html">section 2.2.6</a>). A set of preliminary results are presented in <a href="ch_2.2.6_evaluation.html#2262-inconclusive-results">section 2.2.6.2</a>. Finally we present conclusions and directions for future work in <a href="ch_2.2.7_conclusion.html">section 2.2.7</a>.</p>
 
                     </main>
 
